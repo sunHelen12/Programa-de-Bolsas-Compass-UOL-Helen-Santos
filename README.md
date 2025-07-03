@@ -2,6 +2,10 @@
 
 ## Apresentação
 
+<p align="center">
+  <img src="./img/Helen.png" width="250" height="250">
+</p>
+
 🔭**Graduanda do Curso de Sistemas de Informação:**
 atualmente curso o 3º semestre do Bacharelado em Sistemas de Informação no Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) – Campus Vitória da Conquista.
 
@@ -15,12 +19,6 @@ acredito no poder da colaboração e no crescimento proporcionado pela troca de 
 
 🐈 Interesses além da tecnologia: 
 nos momentos de lazer, aprecio livros que estimulam o pensamento crítico, músicas que favorecem a concentração e animações que proporcionam leveza. Além disso, encontro conforto e alegria na companhia dos meus gatos, que são parte essencial da minha rotina.
-<p align="center">
-  <img src="./img/Helen.png" width="250" height="250">
-</p>
-
-
-
 
 ## Sprints 
 
