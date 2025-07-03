@@ -2,10 +2,21 @@
 
 ## Apresentação
 
-Olá, me chamo Helen Santos Rocha e resido no município de Presidente Jânio Quadros, no estado da Bahia. Atualmente, estou realizando o 3° semestre do curso Bacharelado em Sistemas de Informação no Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) – Campus Vitória da Conquista. Meus principais hobbies estão bastante alinhados com minha área de estudo. Gosto de explorar conceitos de programação mesmo fora do ambiente acadêmico, especialmente em projetos pessoais que envolvem APIs, banco de dados e lógica aplicada. Tenho um grande apreço pelo sistema Linux, que utilizo como meu ambiente principal de estudos e desenvolvimento, adoro customizá-lo, entender sua estrutura e utilizar ferramentas de linha de comando que otimizam minha rotina. Também me interesso por livros que estimulam o pensamento crítico, músicas que ajudam na concentração e, nos momentos de pausa, adoro curtir a companhia dos meus gatos e assistir animações. Sempre busco aprender algo novo, seja estudando ferramentas, seja pesquisando como as coisas funcionam nos bastidores da tecnologia. Sou curiosa por natureza e vejo a programação como uma forma de expressão, descoberta e construção do meu próprio caminho na tecnologia.
+🔭**Graduanda do Curso de Sistemas de Informação:**
+atualmente curso o 3º semestre do Bacharelado em Sistemas de Informação no Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) – Campus Vitória da Conquista.
 
+☕ **Interesse em Banco de Dados e APIs:**
+tenho grande afinidade com áreas como Banco de Dados, desenvolvimento de APIs e lógica de programação aplicada. Essas temáticas fazem parte não apenas da minha formação acadêmica, mas também dos projetos pessoais que desenvolvo por iniciativa própria.
+
+🤝 **Valorização do trabalho em equipe:**
+acredito no poder da colaboração e no crescimento proporcionado pela troca de conhecimentos. Tenho muito interesse em integrar equipes multidisciplinares e contribuir ativamente para o desenvolvimento de soluções tecnológicas.
+
+🌱 **Curiosidade como motor de aprendizado:** sou naturalmente curiosa, o que me leva a explorar diferentes linguagens de programação, ferramentas e metodologias. Utilizo o sistema operacional Linux como meu ambiente principal de desenvolvimento, pois aprecio sua estrutura, customização e as possibilidades que oferece por meio da linha de comando.
+
+🐈 Interesses além da tecnologia: 
+nos momentos de lazer, aprecio livros que estimulam o pensamento crítico, músicas que favorecem a concentração e animações que proporcionam leveza. Além disso, encontro conforto e alegria na companhia dos meus gatos, que são parte essencial da minha rotina.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/35d5c8cc-820a-49d3-8dbc-4c58592ecc45" width="250" height="250">
+  <img src="./img/Helen.png" width="250" height="250">
 </p>
 
 
