@@ -16,12 +16,56 @@
 
 
 1. ...
-[Resposta Ex1.](./Exercicios/ex1.sql)
+[Resposta Ex1.](./Exercicios/Biblioteca/ex01.sql)
 
 
 2. ...
-[Resposta Ex2.](./Exercicios/ex2.py)
+[Resposta Ex2.](./Exercicios/Biblioteca/ex02.sql)
 
+3. ...
+[Resposta Ex3.](./Exercicios/Biblioteca/ex03.sql)
+
+4. ...
+[Resposta Ex4.](./Exercicios/Biblioteca/ex04.sql)
+
+5. ...
+[Resposta Ex5.](./Exercicios/Biblioteca/ex05.sql)
+
+6. ...
+[Resposta Ex6.](./Exercicios/Biblioteca/ex06.sql)
+
+7. ...
+[Resposta Ex7.](./Exercicios/Biblioteca/ex07.sql)
+
+8. ...
+[Resposta Ex8.](./Exercicios/Loja/ex08.sql)
+
+9. ...
+[Resposta Ex9.](./Exercicios/Loja/ex09.sql)
+
+10. ...
+[Resposta Ex10.](./Exercicios/Loja/ex10.sql)
+
+11. ...
+[Resposta Ex11.](./Exercicios/Loja/ex11.sql)
+
+12. ...
+[Resposta Ex12.](./Exercicios/Loja/ex12.sql)
+
+13. ...
+[Resposta Ex13.](./Exercicios/Loja/ex13.sql)
+
+14. ...
+[Resposta Ex14.](./Exercicios/Loja/ex14.sql)
+
+15. ...
+[Resposta Ex15.](./Exercicios/Loja/ex15.sql)
+
+16. ...
+[Resposta Ex16.](./Exercicios/Loja/ex16.sql)
+
+17. ...
+[Resposta Ex17.](./Exercicios/Loja/ex17.sql)
 
 
 # Evidências
@@ -32,11 +76,5 @@ Ao executar o código do exercício ... observei que ... conforme podemos ver na
 ![Evidencia 1](./Evidencias/SegurancaInformacao.png)
 
 
-# Certificados
-
-
-Certificado do Curso  Aprenda Git e GitHub em 3 dias + Projetos reais
-
-![Curso Git e GitHub](./Certificados/Git_GitHub.jpg)
 
 
