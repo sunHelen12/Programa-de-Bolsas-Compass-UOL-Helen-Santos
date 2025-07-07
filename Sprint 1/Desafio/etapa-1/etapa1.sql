@@ -82,11 +82,11 @@ insert into tb_clientes (
 	estadoCliente,
 	paisCliente)
 select
-		idCliente,
-		nomeCliente,
-		cidadeCliente,
-		estadoCliente,
-		paisCliente
+	idCliente,
+	nomeCliente,
+	cidadeCliente,
+	estadoCliente,
+	paisCliente
 from tb_locacao
 group by idCliente
 
