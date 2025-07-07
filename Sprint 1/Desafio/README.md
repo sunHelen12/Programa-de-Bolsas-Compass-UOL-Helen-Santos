@@ -56,7 +56,7 @@ Por fim, a **`tb_locacoes`** foi criada como a tabela central, que une todas as 
     
 - `idCliente`, `idCarro`, `idVendedor`: São as chaves estrangeiras, todas `NOT NULL`, que garantem a integridade referencial do modelo. Elas asseguram que uma locação só possa se referir a um cliente, carro e vendedor que de fato existam em suas respectivas tabelas.
 
-*Obs: Optou-se por não utilizar `AUTOINCREMENT` nas IDs, pra manter os valores originais da tabela antiga.
+*Obs: Optou-se por não utilizar `AUTOINCREMENT` nas IDs, pra manter os valores originais da tabela antiga.*
     
 ```
     create table tb_combustiveis(
