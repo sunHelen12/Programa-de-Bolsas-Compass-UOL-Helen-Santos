@@ -74,7 +74,7 @@
 
 # Evidências
 
-## Exercícos - Parte 1
+## Exercícios - Parte 1
 
 ### Exercício 1
 
