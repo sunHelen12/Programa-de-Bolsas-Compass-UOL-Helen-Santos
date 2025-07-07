@@ -87,7 +87,7 @@ Isso pode ser observado na imagem a seguir:
 
 ![Exercício 1](./Evidencias/Exercicios/ExerciciosI/01-exercicio.png)
 
-### Exercíco 2
+### Exercício 2
 
 Ao executar o código referente ao exercício 2, obtive a listagem dos 10 livros mais caros cadastrados na tabela `livro`.
 
@@ -99,7 +99,7 @@ Isso pode ser observado na imagem a seguir:
 
 ![Exercício 2](./Evidencias/Exercicios/ExerciciosI/02-exercicio.png)
 
-### Exercíco 3
+### Exercício  3
 
 Ao executar o código do exercício 3, eu posso recuperar as cinco editoras que apresentaram o maior número de livros cadastrados na base de dados com o uso do `LIMIT`. No entanto, foram retornadas duas, pois somente duas editoras fizeram publicações.
 
