@@ -35,9 +35,6 @@ print("Pato")
 pato = Pato()
 pato.voar()
 pato.emitir_som()
-
-print()
-
 print("Pardal")
 pardal = Pardal()
 pardal.voar()
