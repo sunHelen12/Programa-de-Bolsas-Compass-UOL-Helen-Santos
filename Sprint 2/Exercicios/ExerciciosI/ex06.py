@@ -13,7 +13,8 @@ def my_map(list, f):
 def potencia_de_dois(x):
     return 2 ** x
 
-lista_de_entrada = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
-resultado = my_map(lista_de_entrada, potencia_de_dois)
+if __name__ == '__main__':
+    lista_de_entrada = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+    resultado = my_map(lista_de_entrada, potencia_de_dois)
 
-print(resultado)
+    print(resultado)

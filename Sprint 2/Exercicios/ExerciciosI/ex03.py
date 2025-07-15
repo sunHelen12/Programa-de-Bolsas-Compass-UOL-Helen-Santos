@@ -8,9 +8,10 @@
 #
 # 0 - João Soares está com 19 anos
 
-primeirosNomes = ['Joao', 'Douglas', 'Lucas', 'José']
-sobreNomes = ['Soares', 'Souza', 'Silveira', 'Pedreira']
-idades = [19, 28, 25, 31]
+if __name__ == '__main__':
+    primeirosNomes = ['Joao', 'Douglas', 'Lucas', 'José']
+    sobreNomes = ['Soares', 'Souza', 'Silveira', 'Pedreira']
+    idades = [19, 28, 25, 31]
 
-for i, (pnome, snome, idade) in enumerate(zip(primeirosNomes, sobreNomes, idades)):
-    print(f'{i} - {pnome} {snome} está com {idade} anos')
+    for i, (pnome, snome, idade) in enumerate(zip(primeirosNomes, sobreNomes, idades)):
+        print(f'{i} - {pnome} {snome} está com {idade} anos')

@@ -4,9 +4,10 @@
 
 import os
 
-os.chdir(os.path.dirname(__file__))
+if __name__ == '__main__':
+    os.chdir(os.path.dirname(__file__))
 
-with open("arquivo_texto.txt", "r", encoding="utf-8") as arquivo_texto:
-    arquivo = arquivo_texto.readlines()
-    for linha in arquivo:
-        print(linha.strip())
+    with open("arquivo_texto.txt", "r", encoding="utf-8") as arquivo_texto:
+        arquivo = arquivo_texto.readlines()
+        for linha in arquivo:
+            print(linha.strip())

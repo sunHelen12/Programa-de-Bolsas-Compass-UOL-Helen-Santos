@@ -12,5 +12,6 @@ def mostrar_parametros(*posicional, **nomeado):
     print("\nParâmetros nomeados:")
     for chave, valor in nomeado.items():
         print(f"  {chave} → {valor}")
-        
-mostrar_parametros(1, 3, 4, 'hello', parametro_nomeado='alguma coisa', x=20)
+
+if __name__ == '__main__':
+    mostrar_parametros(1, 3, 4, 'hello', parametro_nomeado='alguma coisa', x=20)

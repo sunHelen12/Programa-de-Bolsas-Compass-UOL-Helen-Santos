@@ -12,5 +12,6 @@ def soma_numeros(string):
         soma += int(num)
     return soma
 
-resultado = soma_numeros(valor)
-print("Soma:", resultado)
+if __name__ == '__main__':
+    resultado = soma_numeros(valor)
+    print("Soma:", resultado)

@@ -5,5 +5,6 @@
 def semDuplicacao(duplicatas):
   return list(set(duplicatas))
 
-duplicatas = ['abc', 'abc', 'abc', '123', 'abc', '123', '123']
-print(semDuplicacao(duplicatas))
+if __name__ == '__main__':
+  duplicatas = ['abc', 'abc', 'abc', '123', 'abc', '123', '123']
+  print(semDuplicacao(duplicatas))

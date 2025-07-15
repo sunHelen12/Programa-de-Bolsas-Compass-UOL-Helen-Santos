@@ -14,10 +14,10 @@
  
 # A palavra: moto não é um palíndromo
 
-lista = ['maça', 'arara', 'audio','radio', 'radar', 'moto']
-
-for palavra in lista:
-    if palavra == palavra[::-1]:
-        print(f'A palavra: {palavra} é um palíndromo.\n')
-    else: 
-        print(f'A palavra: {palavra} não é um palíndromo.\n')
+if __name__ == '__main__':
+    lista = ['maça', 'arara', 'audio','radio', 'radar', 'moto']
+    for palavra in lista:
+        if palavra == palavra[::-1]:
+            print(f'A palavra: {palavra} é um palíndromo.\n')
+        else: 
+            print(f'A palavra: {palavra} não é um palíndromo.\n')

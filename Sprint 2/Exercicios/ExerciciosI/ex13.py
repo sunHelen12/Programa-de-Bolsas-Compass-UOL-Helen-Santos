@@ -16,19 +16,20 @@
 
 import random
 
-random_list = random.sample(range(500), 50)
-valor_minimo = min(random_list)
-valor_maximo = max(random_list)
+if __name__ == '__main__':
+    random_list = random.sample(range(500), 50)
+    valor_minimo = min(random_list)
+    valor_maximo = max(random_list)
 
-media = sum(random_list) / len(random_list)
-lista_ordenada = sorted(random_list)
-meio = len(lista_ordenada) // 2
-mediana = (lista_ordenada[meio - 1] + lista_ordenada[meio]) / 2
+    media = sum(random_list) / len(random_list)
+    lista_ordenada = sorted(random_list)
+    meio = len(lista_ordenada) // 2
+    mediana = (lista_ordenada[meio - 1] + lista_ordenada[meio]) / 2
 
-print("Mediana:", mediana)
-print("Média:", media)
-print("Valor Mínimo:", valor_minimo)
-print("Valor Máximo:", valor_maximo)
+    print("Mediana:", mediana)
+    print("Média:", media)
+    print("Valor Mínimo:", valor_minimo)
+    print("Valor Máximo:", valor_maximo)
 
 
 

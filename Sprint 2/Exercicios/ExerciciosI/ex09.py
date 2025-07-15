@@ -23,10 +23,11 @@ class Lampada:
     
     def esta_ligada(self):
         return self.ligada
+    
+if __name__ == '__main__':
+    lampada = Lampada(False)
+    lampada.liga()
+    print("A lâmpada está ligada?", lampada.esta_ligada())
 
-lampada = Lampada(False)
-lampada.liga()
-print("A lâmpada está ligada?", lampada.esta_ligada())
-
-lampada.desliga()
-print("A lâmpada ainda está ligada?", lampada.esta_ligada())
+    lampada.desliga()
+    print("A lâmpada ainda está ligada?", lampada.esta_ligada())

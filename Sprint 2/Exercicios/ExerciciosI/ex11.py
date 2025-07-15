@@ -9,9 +9,10 @@ def dividir_funcao(list):
     lista_tres = lista[2*tamanho:]
     return lista_um, lista_dois, lista_tres
 
-lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-lista_um, lista_dois, lista_tres = dividir_funcao(lista)
+if __name__ == '__main__':
+    lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    lista_um, lista_dois, lista_tres = dividir_funcao(lista)
 
-print("Lista 1:", lista_um)
-print("Lista 2:", lista_dois)
-print("Lista 3:", lista_tres)
+    print("Lista 1:", lista_um)
+    print("Lista 2:", lista_dois)
+    print("Lista 3:", lista_tres)
