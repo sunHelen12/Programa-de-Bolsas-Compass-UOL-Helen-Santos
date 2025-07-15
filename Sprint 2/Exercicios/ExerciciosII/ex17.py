@@ -9,6 +9,14 @@
 # Somando: 4+5 = 9
 # Subtraindo: 4-5 = -1
 
+class Calculo:
+    def soma(self, x, y):
+        return x + y
+    
+    def subtracao(self, x, y):
+        return x - y
 
 if __name__ == '__main__':
-    pass
+    calculo = Calculo()
+    print(f"Somando: {calculo.soma(4, 5)}")
+    print(f"Subtraindo: {calculo.subtracao(4, 5)}" )
