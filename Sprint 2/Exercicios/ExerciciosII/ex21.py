@@ -11,6 +11,6 @@ def conta_vogais(texto: str) -> int:
     return len(list(filter(lambda letra: letra in vogais, texto)))   
 
 if __name__ == "__main__":
-    print(conta_vogais("Python"))
-    print(conta_vogais("SQL"))
-    print(conta_vogais("DADOS"))
+    print(f"Quantidade de vogais: {conta_vogais("Python")}")
+    print(f"Quantidade de vogais: {conta_vogais("SQL")}")
+    print(f"Quantidade de vogais: {conta_vogais("DADOS")}")

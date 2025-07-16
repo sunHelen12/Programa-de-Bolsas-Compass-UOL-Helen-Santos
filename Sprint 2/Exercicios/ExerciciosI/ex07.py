@@ -5,9 +5,10 @@
 import os
 
 if __name__ == '__main__':
-    os.chdir(os.path.dirname(__file__))
+    diretorio_base = os.path.dirname(__file__)  
+    caminho_arquivo = os.path.join(diretorio_base, "Arquivos", "arquivo_texto.txt")
 
-    with open("arquivo_texto.txt", "r", encoding="utf-8") as arquivo_texto:
+    with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_texto:
         arquivo = arquivo_texto.readlines()
         for linha in arquivo:
             print(linha.strip())

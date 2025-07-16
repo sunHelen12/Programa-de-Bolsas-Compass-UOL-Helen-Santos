@@ -11,16 +11,18 @@
 
 import os
 
-if __name__ == "__main__":
-    os.chdir(os.path.dirname(__file__))
+if __name__ == "__main__":    
+    diretorio_base = os.path.dirname(__file__)  
+    caminho_arquivo = os.path.join(diretorio_base, "Arquivos", "number.txt")
 
-    with open("numeros.txt", "r", encoding="utf-8") as arquivo:
-        linhas = arquivo.readlines()
-    
-    numeros = list(map(int, linhas))
-    pares = list(filter(lambda x: x % 2 == 0, numeros))
-    maiores_pares = sorted(pares, reverse=True)[:5]
-    soma = sum(maiores_pares)
+    with open(caminho_arquivo, "r") as arquivo:    
+        numeros_str = arquivo.readlines()
+
+    numeros_int = map(int, numeros_str)
+    numeros_pares = filter(lambda x: x % 2 == 0, numeros_int)
+    numeros_pares_ordenados = sorted(numeros_pares, reverse=True)
+    maiores_pares = numeros_pares_ordenados[:5]
+    soma_maiores_pares = sum(maiores_pares)
 
     print(maiores_pares)
-    print(soma)
+    print(soma_maiores_pares)
