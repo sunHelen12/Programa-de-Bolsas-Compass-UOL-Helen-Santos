@@ -36,7 +36,7 @@ from tb_carros c
 left join tb_combustiveis cb
 	on c.idCombustivel = cb.idCombustivel;
 
--- Cria view para formatar o tempo de locaçãp
+-- Cria view para formatar o tempo de locação
 create view dim_tempo as
 select
 	distinct
