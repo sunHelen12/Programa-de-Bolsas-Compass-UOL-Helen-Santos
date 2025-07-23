@@ -40,31 +40,39 @@ left join tb_combustiveis cb
 create view dim_tempo as
 select
 	distinct
-	dataLocacao,
-	cast(strftime('%Y', dataLocacao) as integer) as ano,
-	cast(strftime('%m', dataLocacao) as integer) as mes,
-	cast(strftime('%d', dataLocacao) as integer) as dia,
-	cast(strftime('%W', dataLocacao) as integer) as semana_do_ano,
+	dataHora,
+	cast(strftime('%Y', dataHora) as integer) as ano,
+	cast(strftime('%m', dataHora) as integer) as mes,
+	cast(strftime('%d', dataHora) as integer) as dia,
+	cast(strftime('%H', dataHora) as integer) as hora,
+	cast(strftime('%W', dataHora) as integer) as semana_do_ano,
 	case
-		when strftime('%m', dataLocacao) in ('01', '02', '03') then '1º Trimestre'
-        when strftime('%m', dataLocacao) in ('04', '05', '06') then '2º Trimestre'
-        when strftime('%m', dataLocacao) in ('07', '08', '09') then '3º Trimestre'
+		when strftime('%m', dataHora) in ('01', '02', '03') then '1º Trimestre'
+        when strftime('%m', dataHora) in ('04', '05', '06') then '2º Trimestre'
+        when strftime('%m', dataHora) in ('07', '08', '09') then '3º Trimestre'
         else '4º Trimestre'
 	end as trimestre
-from tb_locacoes;
+from (
+	select dataLocacao as dataHora from tb_locacoes
+	union
+	select dataEntrega as dataHora from tb_locacoes
+);
 
 -- Cria view fato
 create view fato_locacoes as
 select
-    idLocacao,
-    idCliente,
-    idCarro,
-    idVendedor,
-    dataLocacao,
-    qtdDiaria,
-    vlrDiaria,
-    (qtdDiaria * vlrDiaria) as faturamento_total
-from tb_locacoes;
+    l.idLocacao,
+    l.idCliente,
+    l.idCarro,
+    l.idVendedor,
+    l.dataLocacao,
+    l.dataEntrega,
+    l.qtdDiaria,
+    l.vlrDiaria,
+    (l.qtdDiaria * l.vlrDiaria) as faturamento_total,
+    strftime('%Y-%m-%d %H:00:00', l.dataLocacao) as tempoLocacao,
+    strftime('%Y-%m-%d %H:00:00', l.dataEntrega) as tempoEntrega
+from tb_locacoes l;
 
 -- VISUALIZAÇÃO DAS DIMENSÕES E FATO 
 select * from dim_tempo;
@@ -79,15 +87,6 @@ select * from fato_locacoes;
 -- drop view dim_clientes;	
 -- drop view dim_vendedores;
 -- drop view fato_locacoes;
-
-
-
-
-
-
-
-
-
 
 
 

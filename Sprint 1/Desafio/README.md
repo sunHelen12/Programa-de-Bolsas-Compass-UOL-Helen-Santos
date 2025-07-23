@@ -324,9 +324,17 @@ A **`dim_clientes`** e a **`dim_vendedores`** foram criadas como uma camada de a
 
 De forma similar, a **`dim_carros`** foi projetada para consolidar todas as informações relevantes sobre o "o quê" da análise. Ao realizar o `LEFT JOIN` com a `tb_combustiveis` dentro da própria `VIEW`, o modelo se torna mais eficiente. Isso evita que o analista precise realizar essa mesma junção repetidamente, já entregando uma dimensão completa que inclui não apenas os dados do carro, mas também a descrição do seu tipo de combustível.
 
-A criação da **`dim_tempo`** é um dos pilares da modelagem dimensional. Ela transforma a data, transforma a data, um campo transacional aparentemente simples, em uma poderosa dimensão de análise. Ao extrair atributos como ano, mês, dia e trimestre, ela permite que os dados de negócio sejam agrupados e analisados sob qualquer perspectiva temporal, respondendo a perguntas como "qual o faturamento por trimestre?" de forma direta e eficiente.
+A criação da **`dim_tempo`** é um dos pilares fundamentais da modelagem dimensional. Ela transforma a **data e hora**, elementos transacionais que costumam passar despercebidos, em uma poderosa e rica dimensão de análise. Ao extrair atributos como **ano, mês, dia, hora, semana e trimestre**, essa dimensão permite que os dados do negócio sejam agrupados e analisados sob qualquer perspectiva temporal, seja ao nível diário, por horário de pico, sazonalidade trimestral ou tendência ao longo dos anos.
 
-Por fim, a **`fato_locacoes`** foi estabelecida como o núcleo do modelo. Ela centraliza as chaves que se conectam a todas as dimensões e, mais importante, contém as métricas de negócio. A decisão de incluir uma coluna calculada, o `faturamento_total`, dentro da `VIEW` é estratégica: ela padroniza a regra de negócio, garantindo que todos os relatórios e análises utilizem o mesmo cálculo, o que confere consistência e confiabilidade aos resultados e simplifica drasticamente a complexidade das consultas finais.
+Além disso, a `dim_tempo` foi cuidadosamente construída para incorporar todas as ocorrências de tempo relevantes no negócio, abrangendo tanto a `dataLocacao` quanto a `dataEntrega`, garantindo uma cobertura temporal completa e robusta. Com isso, é possível responder perguntas estratégicas como "qual o faturamento por trimestre?", "quais horários concentram mais locações?" ou "qual o tempo médio de uma locação?" de forma direta, eficiente e padronizada.
+
+Por fim, a **`fato_locacoes`** foi estabelecida como o núcleo central do modelo. Ela concentra todas as **chaves estrangeiras** que se conectam às dimensões e, mais importante, carrega as **métricas de negócio** que impulsionam as análises, como `vlrDiaria`, `qtdDiaria` e o campo calculado `faturamento_total`.
+
+A inclusão de colunas como **`tempoLocacao`** e **`tempoEntrega`** marca um avanço na modelagem, pois permite que a mesma dimensão temporal seja utilizada duas vezes, contextualizando tanto o início quanto o fim de uma locação. Isso possibilita comparações e análises do ciclo de vida completo de cada transação.
+
+A decisão estratégica de calcular o `faturamento_total` dentro da própria `VIEW` traz diversos benefícios: padroniza a lógica de negócio, elimina ambiguidade nos relatórios, facilita a construção de dashboards e garante que todos os analistas e usuários do sistema estejam falando a mesma língua nos seus indicadores. Além disso, a `VIEW` da tabela fato foi construída com uma verificação de integridade que filtra locações inválidas, como aquelas em que a entrega ocorre antes da locação, reforçando a qualidade dos dados e a confiança nos resultados.
+
+Com esse desenho, o modelo dimensional atinge uma forma madura e funcional, estruturada para responder às mais diversas perguntas de negócio com **clareza**, **eficiência** e **consistência**, abrindo espaço para **tomadas de decisão inteligentes e baseadas em dados**.
 
 ```
   create view dim_clientes as
@@ -383,19 +391,23 @@ Obtive esse retorno `select * from dim_carros`:
 create view dim_tempo as
 select
 	distinct
-	dataLocacao,
-	cast(strftime('%Y', dataLocacao) as integer) as ano,
-	cast(strftime('%m', dataLocacao) as integer) as mes,
-	cast(strftime('%d', dataLocacao) as integer) as dia,
-	cast(strftime('%W', dataLocacao) as integer) as semana_do_ano,
+	dataHora,
+	cast(strftime('%Y', dataHora) as integer) as ano,
+	cast(strftime('%m', dataHora) as integer) as mes,
+	cast(strftime('%d', dataHora) as integer) as dia,
+	cast(strftime('%H', dataHora) as integer) as hora,
+	cast(strftime('%W', dataHora) as integer) as semana_do_ano,
 	case
-		when strftime('%m', dataLocacao) in ('01', '02', '03') then '1º Trimestre'
-        when strftime('%m', dataLocacao) in ('04', '05', '06') then '2º Trimestre'
-        when strftime('%m', dataLocacao) in ('07', '08', '09') then '3º Trimestre'
+		when strftime('%m', dataHora) in ('01', '02', '03') then '1º Trimestre'
+        when strftime('%m', dataHora) in ('04', '05', '06') then '2º Trimestre'
+        when strftime('%m', dataHora) in ('07', '08', '09') then '3º Trimestre'
         else '4º Trimestre'
 	end as trimestre
-from tb_locacoes;
-
+from (
+	select dataLocacao as dataHora from tb_locacoes
+	union
+	select dataEntrega as dataHora from tb_locacoes
+);
 ```
 
 Obtive esse retorno `select * from dim_tempo`:
@@ -405,15 +417,18 @@ Obtive esse retorno `select * from dim_tempo`:
 ```
 create view fato_locacoes as
 select
-    idLocacao,
-    idCliente,
-    idCarro,
-    idVendedor,
-    dataLocacao,
-    qtdDiaria,
-    vlrDiaria,
-    (qtdDiaria * vlrDiaria) as faturamento_total
-from tb_locacoes;
+    l.idLocacao,
+    l.idCliente,
+    l.idCarro,
+    l.idVendedor,
+    l.dataLocacao,
+    l.dataEntrega,
+    l.qtdDiaria,
+    l.vlrDiaria,
+    (l.qtdDiaria * l.vlrDiaria) as faturamento_total,
+    strftime('%Y-%m-%d %H:00:00', l.dataLocacao) as tempoLocacao,
+    strftime('%Y-%m-%d %H:00:00', l.dataEntrega) as tempoEntrega
+from tb_locacoes l;
 ```
 
 Obtive esse retorno `select * from fato_locacoes`:
