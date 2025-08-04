@@ -22,7 +22,7 @@ Neste desafio, foi desenvolvido um pipeline completo de dados para processar e a
 
 1. ... [Código(Etapa I)](./etapa-1/etl1.py)
 --
-       [Dockerfile(Etapa I)](./Dockerfile.etl)
+       [Dockerfile(Etapa I)](./etapa-1/Dockerfile.etl)
 
 ## Script `etl1.py`
 
