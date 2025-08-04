@@ -406,7 +406,7 @@ Arquivo `.env`:
 
 ## Rodando Localmente
 
-O Desafio também podem ser executados localmente:
+O Desafio também pode ser executado localmente:
 
 Arquivo `etl1`:
 
