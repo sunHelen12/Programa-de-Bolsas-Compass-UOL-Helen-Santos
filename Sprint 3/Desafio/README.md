@@ -249,7 +249,7 @@ Este segmento de código aborda a terceira questão calculando quais são as tr�
 
 ## Salvando Respostas `Q1`, `Q2` e `Q3`:
 
-O código abixo consolida todas as respostas das três questões em um único arquivo de texto. Utiliza uma f-string multilinha para formatar as respostas das questões Q1, Q2 e Q3 com separadores visuais, criando uma estrutura organizada. Em seguida, define o caminho de saída (`respostas.txt`) dentro da pasta volume e salva o conteúdo usando `with open()` com codificação `UTF-8`, aplicando `strip()` para remover espaços em branco desnecessários no início e fim do texto antes da gravação.
+O código abaixo consolida todas as respostas das três questões em um único arquivo de texto. Utiliza uma f-string multilinha para formatar as respostas das questões Q1, Q2 e Q3 com separadores visuais, criando uma estrutura organizada. Em seguida, define o caminho de saída (`respostas.txt`) dentro da pasta volume e salva o conteúdo usando `with open()` com codificação `UTF-8`, aplicando `strip()` para remover espaços em branco desnecessários no início e fim do texto antes da gravação.
 
 ```
 respostas = f"""
