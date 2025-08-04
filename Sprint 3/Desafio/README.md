@@ -153,7 +153,7 @@ CMD ["python", "etl1.py"]
 
 2. ... [Código(Etapa II)](./etapa-2/job.py)
 --
-       [Dockerfile(Etapa II)](./Dockerfile.job)
+       [Dockerfile(Etapa II)](./etapa-2/Dockerfile.job)
 
 ## Script `job.py`
 
