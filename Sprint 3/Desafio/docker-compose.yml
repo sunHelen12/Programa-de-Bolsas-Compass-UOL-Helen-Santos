@@ -1,0 +1,27 @@
+# Este ficheiro orquestra a execução dos dois contêineres em sequência.
+services:
+  # Serviço 1: Limpa o ficheiro CSV original.
+  etl:
+    build:      
+      context: .
+      # Aponta para o caminho do Dockerfile
+      dockerfile: etapa-1/Dockerfile.etl   
+    volumes:
+      # Mapeia a pasta local ./volume' no arquivo .env 
+      # e na pasta '/app/dados' dentro do container.
+      - ${VOLUME_PATH}:/app/dados
+  # Serviço 2: Analisa os dados limpos e gera os resultados.
+  job:
+    build:
+      context: .
+      # Aponta para caminho do Dockerfile
+      dockerfile: etapa-2/Dockerfile.job   
+    volumes:
+      # Mapeia a  pasta de dados para ler o csv_limpo.csv
+      # e também para escrever os resultados.
+      - ${VOLUME_PATH}:/app/dados
+    depends_on:
+      # Garante que este serviço só comece a ser executado depois
+      # que o serviço 'etl' terminar com sucesso.
+      etl:
+        condition: service_completed_successfully

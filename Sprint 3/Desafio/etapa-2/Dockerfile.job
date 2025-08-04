@@ -1,0 +1,15 @@
+# Dockerfile para o script job.py
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY arquivos/dependencias.txt .
+
+# Instalando as dependências de sistema para o 
+RUN apt-get update && apt-get install -y libgomp1 && \
+    pip install --no-cache-dir -r dependencias.txt
+    
+# Copiando o script para a raiz do WORKDIR
+COPY etapa-2/job.py .
+
+CMD ["python", "job.py"]

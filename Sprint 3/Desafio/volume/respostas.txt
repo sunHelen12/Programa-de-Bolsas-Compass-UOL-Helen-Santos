@@ -1,0 +1,11 @@
+Q1:
+---A artista que mais aparece na lista é 'Taylor Swift. A média de seu faturamento bruto (Actual Gross) é de $381518786.50.
+
+Q2:
+---A turnê em um único ano com maior média de faturamento bruto é 'Renaissance World Tour' da artista 'Beyoncé'.
+
+Q3:
+---
+- Artista: Taylor Swift, Turnê: The Eras Tour, Valor por Show: $13928571.43
+- Artista: Beyoncé, Turnê: Renaissance World Tour, Valor por Show: $10353571.43
+- Artista: Taylor Swift, Turnê: Reputation Stadium Tour, Valor por Show: $7600846.21

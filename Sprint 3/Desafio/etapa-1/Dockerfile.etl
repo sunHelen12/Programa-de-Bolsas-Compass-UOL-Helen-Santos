@@ -1,0 +1,14 @@
+# Dockerfile para o script etl1.py
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Dependências
+COPY arquivos/dependencias.txt .
+
+RUN pip install --no-cache-dir -r dependencias.txt
+
+# Copiando o script para a raiz do WORKDIR
+COPY etapa-1/etl1.py .
+
+CMD ["python", "etl1.py"]
