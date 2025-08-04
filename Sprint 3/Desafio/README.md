@@ -121,7 +121,7 @@ Obtive o seguinte resultado:
 
 Arquivo Limpo Gerado:
 
-[DataFrame Limpo - Imagem](./volume/csv_limpo.csv)
+[DataFrame Limpo](./volume/csv_limpo.csv)
 
 DataFrame após a limpeza:
 
