@@ -1,4 +1,4 @@
-# Este ficheiro orquestra a execução dos dois contêineres em sequência.
+# Este arquvivo orquestra a execução dos dois contêineres em sequência.
 services:
   # Serviço 1: Limpa o ficheiro CSV original.
   etl:

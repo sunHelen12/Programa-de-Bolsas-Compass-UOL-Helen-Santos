@@ -319,11 +319,11 @@ Arquivo Gerado:
 
 • **Q5 - Faça um gráfico de colunas demonstrando as 5 artistas com mais shows na lista.**
 
-Para gerar o gráfico de barras das cinco artistas com maior número total de shows. Agrupou-se o DataFrame por artista, somou-se a quantidade de shows de cada uma, ordenou-se em ordem decrescente e  foi selecionado as cinco primeiras usando `head(5)`. Criou-se uma figura matplotlib e foi gerado um gráfico de barras na cor `slateblue` usando o método `plot(kind='bar')`. Adicionou-se o título e rótulos dos eixos com formatação em negrito, rotacionando os nomes das artistas no eixo X em 45 graus com alinhamento à direita para melhor legibilidade. Após isso, foi salvo o resultado como `Q5.png` na pasta `volume` e assim fechou-se a figura com `plt.close()`.
+Para gerar o gráfico de colunas das cinco artistas com maior número total de shows. Agrupou-se o DataFrame por artista, somou-se a quantidade de shows de cada uma, ordenou-se em ordem decrescente e  foi selecionado as cinco primeiras usando `head(5)`. Criou-se uma figura matplotlib e foi gerado um gráfico de colunas na cor `slateblue` usando o método `plot(kind='bar')`. Adicionou-se o título e rótulos dos eixos com formatação em negrito, rotacionando os nomes das artistas no eixo X em 45 graus com alinhamento à direita para melhor legibilidade. Após isso, foi salvo o resultado como `Q5.png` na pasta `volume` e assim fechou-se a figura com `plt.close()`.
 
 Obtive esse resultado:
 
-![Gráfico de Barras](../Evidencias/Desafio/etapa-2/02-Q5.png)
+![Gráfico de colunas](../Evidencias/Desafio/etapa-2/02-Q5.png)
 
 *Obs: O arquivo só será gerado caso o código seja executado localmente ou via Dokcer!*
 Arquivo Limpo Gerado:
