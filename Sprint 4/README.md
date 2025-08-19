@@ -243,7 +243,7 @@ RUN yum -y clean all
 
 *Resultado:*
 
-![Resultado](./Evidencias/Exercicios/03-Lab-AWS-Lambda/05-resultado-lab3.png)
+![Resultado](./Evidencias/Exercicios/03-Lab-AWS-Lambda/05-resultado.png)
 
 
 # Certificados
