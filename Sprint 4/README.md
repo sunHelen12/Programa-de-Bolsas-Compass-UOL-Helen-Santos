@@ -243,14 +243,14 @@ RUN yum -y clean all
 
 *Resultado:*
 
-![Resultado](./Evidencias/Exercicios/03-Lab-AWS-Lambda/05-resultado.png)
+![Resultado](./Evidencias/Exercicios/03-Lab-AWS-Lambda/05-resultado-lab3.png)
 
 
 # Certificados
 
 Certificado do Curso *AWS Partner: Sales Accreditation*
 
-![Curso - AWS Partner: Sales Accreditation](./Certificados/imgs/Helen-Santos-Certicado-1.png)
+![Curso - AWS Partner: Sales Accreditation](./Certificados/imgs/Helen-Santos-Certicado-1.png05-resultado)
 
 Certificado do Curso *AWS Partner: Cloud Economics*
 
