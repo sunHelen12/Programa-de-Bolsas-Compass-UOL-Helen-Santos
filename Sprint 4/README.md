@@ -179,7 +179,7 @@ ORDER BY
 
 *Após realizar a consulta:*
 
-![Resultado](./Evidencias/Exercicios/02-Lab-AWS-Athena/01-resultado.png)
+![Resultado](./Evidencias/Exercicios/02-Lab-AWS-Athena/02-resultado-lab.png)
 
 ### Exercício III - Lab AWS Lambda
 ---
