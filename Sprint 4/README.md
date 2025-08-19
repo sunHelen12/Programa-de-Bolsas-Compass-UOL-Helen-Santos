@@ -250,7 +250,7 @@ RUN yum -y clean all
 
 Certificado do Curso *AWS Partner: Sales Accreditation*
 
-![Curso - AWS Partner: Sales Accreditation](./Certificados/imgs/Helen-Santos-Certicado-1.png05-resultado)
+![Curso - AWS Partner: Sales Accreditation](./Certificados/imgs/Helen-Santos-Certicado-1.png)
 
 Certificado do Curso *AWS Partner: Cloud Economics*
 
