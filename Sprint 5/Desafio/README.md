@@ -1,9 +1,9 @@
 
 # Sobre as Análises
 
-A motivação central desta análise é mergulhar nos universos do **Terror** e do **Mistério** no cinema e na TV para descobrir padrões, tendências e o que define o sucesso dentro desses gêneros. Além de apenas olhar para as obras, a análise busca entender a carreira dos profissionais envolvidos (atores e diretores) e o ciclo de vida de uma produção seriada.
+A motivação central destas análises é mergulhar nos universos do **Terror** e do **Mistério** no cinema e na TV para descobrir padrões, tendências e o que define o sucesso dentro desses gêneros. Além de apenas olhar para as obras, a análise busca entender a carreira dos profissionais envolvidos (atores e diretores) e o ciclo de vida de uma produção seriada.
 
-Para guiar este trabalho, a análise buscará responder às seguintes perguntas-chave:
+Para guiar este trabalho, as análises buscam responder às seguintes perguntas-chave:
 
 * **Comparativo de Décadas:** Filmes de Terror dos anos 80 são, de fato, mais bem avaliados que os filmes de Terror produzidos nos anos 2000?
 * **Ranking de Gênero:** Qual é a série de Mistério mais bem avaliada de todos os tempos?
