@@ -6,7 +6,10 @@ A motivação para esta análise é dissecar os fatores que definem o sucesso e 
 Para guiar este trabalho, a análise buscará responder às seguintes perguntas-chave:
 
 1. **A Evolução da  Protagonista Feminina:** Comparando a década de 80 com a década de 2020, filmes de terror com protagonistas femininas se tornaram mais ou menos comuns? E como a avaliação média desses filmes se compara entre as duas épocas?
-2. **Parcerias Recorrentes no Terror Moderno:** Quais atores ou atrizes formam as parcerias mais recorrentes com diretores icônicos de terror a partir dos anos 2000?
+2. **Parcerias Recorrentes no Terror Moderno:** Quais atores ou atrizes formam as parcerias mais recorrentes com diretores icônicos de terror a partir dos anos 2000? 
+
+*Obs: Os diretores icônicos escolhidos para essa análise foram: James Wan, Ari Aster, Robert Eggers e Mike Flanaga.*
+
 3. **Terror Psicológico e Mistério:** Filmes de terror psicológico que também são classificados como mistério são, de fato, mais bem avaliados pela crítica do que aqueles que são puramente terror psicológico?
 4. **O Dilema do Terror Leve:** Filmes de terror com classificação indicativa para 12 anos conseguem ser bem-sucedidos tanto financeiramente quanto em avaliação? Como o retorno sobre investimento e a nota média desses filmes se comparam com os de terror mais explícitos (classificação 16 ou 18 anos)?
 5. **Mestres do Suspense Moderno:** Quem é o verdadeiro mestre do suspense: David Fincher ou Christopher Nolan? Analisando a filmografia de mistério e suspense de ambos, qual diretor apresenta uma carreira mais consistente em termos de aclamação da crítica (nota média) e sucesso de bilheteria?
