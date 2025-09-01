@@ -1,0 +1,294 @@
+{
+  "terror_pg13": {
+    "quantidade": 20,
+    "nota_media": 6.803050000000001,
+    "filmes": [
+      {
+        "id": 615656,
+        "title": "Meg 2: The Trench",
+        "release_date": "2023-08-02",
+        "vote_average": 6.417,
+        "popularidade": 17.8039
+      },
+      {
+        "id": 72190,
+        "title": "World War Z",
+        "release_date": "2013-06-19",
+        "vote_average": 6.823,
+        "popularidade": 14.2619
+      },
+      {
+        "id": 507089,
+        "title": "Five Nights at Freddy's",
+        "release_date": "2023-10-25",
+        "vote_average": 7.41,
+        "popularidade": 12.2767
+      },
+      {
+        "id": 917496,
+        "title": "Beetlejuice Beetlejuice",
+        "release_date": "2024-09-04",
+        "vote_average": 6.986,
+        "popularidade": 11.6335
+      },
+      {
+        "id": 345940,
+        "title": "The Meg",
+        "release_date": "2018-08-09",
+        "vote_average": 6.2,
+        "popularidade": 10.4731
+      },
+      {
+        "id": 381288,
+        "title": "Split",
+        "release_date": "2017-01-19",
+        "vote_average": 7.342,
+        "popularidade": 9.5246
+      },
+      {
+        "id": 762441,
+        "title": "A Quiet Place: Day One",
+        "release_date": "2024-06-26",
+        "vote_average": 6.706,
+        "popularidade": 11.4132
+      },
+      {
+        "id": 536554,
+        "title": "M3GAN",
+        "release_date": "2022-12-28",
+        "vote_average": 7.057,
+        "popularidade": 10.1925
+      },
+      {
+        "id": 940721,
+        "title": "Godzilla Minus One",
+        "release_date": "2023-11-03",
+        "vote_average": 7.587,
+        "popularidade": 10.2543
+      },
+      {
+        "id": 520763,
+        "title": "A Quiet Place Part II",
+        "release_date": "2021-05-21",
+        "vote_average": 7.461,
+        "popularidade": 9.2131
+      },
+      {
+        "id": 7131,
+        "title": "Van Helsing",
+        "release_date": "2004-05-03",
+        "vote_average": 6.383,
+        "popularidade": 9.6206
+      },
+      {
+        "id": 447332,
+        "title": "A Quiet Place",
+        "release_date": "2018-04-03",
+        "vote_average": 7.396,
+        "popularidade": 8.8768
+      },
+      {
+        "id": 1032823,
+        "title": "Trap",
+        "release_date": "2024-07-31",
+        "vote_average": 6.278,
+        "popularidade": 7.8695
+      },
+      {
+        "id": 1244944,
+        "title": "The Woman in the Yard",
+        "release_date": "2025-03-27",
+        "vote_average": 5.824,
+        "popularidade": 9.0897
+      },
+      {
+        "id": 49018,
+        "title": "Insidious",
+        "release_date": "2011-03-31",
+        "vote_average": 6.942,
+        "popularidade": 8.8037
+      },
+      {
+        "id": 614479,
+        "title": "Insidious: The Red Door",
+        "release_date": "2023-07-05",
+        "vote_average": 6.564,
+        "popularidade": 8.4954
+      },
+      {
+        "id": 315011,
+        "title": "Shin Godzilla",
+        "release_date": "2016-07-29",
+        "vote_average": 7.217,
+        "popularidade": 7.8906
+      },
+      {
+        "id": 1086747,
+        "title": "The Watchers",
+        "release_date": "2024-06-06",
+        "vote_average": 6.386,
+        "popularidade": 8.3752
+      },
+      {
+        "id": 340102,
+        "title": "The New Mutants",
+        "release_date": "2020-04-02",
+        "vote_average": 6.09,
+        "popularidade": 6.7531
+      },
+      {
+        "id": 333371,
+        "title": "10 Cloverfield Lane",
+        "release_date": "2016-03-10",
+        "vote_average": 6.992,
+        "popularidade": 7.0465
+      }
+    ]
+  },
+  "terror_r": {
+    "quantidade": 20,
+    "nota_media": 6.728350000000001,
+    "filmes": [
+      {
+        "id": 1242011,
+        "title": "Together",
+        "release_date": "2025-07-23",
+        "vote_average": 7.188,
+        "popularidade": 466.1525
+      },
+      {
+        "id": 1083433,
+        "title": "I Know What You Did Last Summer",
+        "release_date": "2025-07-16",
+        "vote_average": 5.823,
+        "popularidade": 430.9337
+      },
+      {
+        "id": 1078605,
+        "title": "Weapons",
+        "release_date": "2025-08-04",
+        "vote_average": 7.468,
+        "popularidade": 296.67
+      },
+      {
+        "id": 926606,
+        "title": "The Home",
+        "release_date": "2025-07-24",
+        "vote_average": 6.3,
+        "popularidade": 159.4214
+      },
+      {
+        "id": 574475,
+        "title": "Final Destination Bloodlines",
+        "release_date": "2025-05-14",
+        "vote_average": 7.15,
+        "popularidade": 82.2529
+      },
+      {
+        "id": 1151031,
+        "title": "Bring Her Back",
+        "release_date": "2025-05-28",
+        "vote_average": 7.387,
+        "popularidade": 75.5269
+      },
+      {
+        "id": 1100988,
+        "title": "28 Years Later",
+        "release_date": "2025-06-18",
+        "vote_average": 6.8,
+        "popularidade": 70.2167
+      },
+      {
+        "id": 1038392,
+        "title": "The Conjuring: Last Rites",
+        "release_date": "2025-09-03",
+        "vote_average": 7.0,
+        "popularidade": 71.1161
+      },
+      {
+        "id": 1393382,
+        "title": "Popeye's Revenge",
+        "release_date": "2025-02-12",
+        "vote_average": 5.2,
+        "popularidade": 58.3159
+      },
+      {
+        "id": 138843,
+        "title": "The Conjuring",
+        "release_date": "2013-07-18",
+        "vote_average": 7.54,
+        "popularidade": 51.3253
+      },
+      {
+        "id": 1339166,
+        "title": "Shaman",
+        "release_date": "2025-07-16",
+        "vote_average": 5.575,
+        "popularidade": 43.9005
+      },
+      {
+        "id": 1233413,
+        "title": "Sinners",
+        "release_date": "2025-04-16",
+        "vote_average": 7.5,
+        "popularidade": 38.8554
+      },
+      {
+        "id": 1285965,
+        "title": "Dangerous Animals",
+        "release_date": "2025-06-05",
+        "vote_average": 6.486,
+        "popularidade": 36.7401
+      },
+      {
+        "id": 423108,
+        "title": "The Conjuring: The Devil Made Me Do It",
+        "release_date": "2021-05-25",
+        "vote_average": 7.4,
+        "popularidade": 37.1244
+      },
+      {
+        "id": 1084199,
+        "title": "Companion",
+        "release_date": "2025-01-22",
+        "vote_average": 7.055,
+        "popularidade": 34.3914
+      },
+      {
+        "id": 273477,
+        "title": "Scouts Guide to the Zombie Apocalypse",
+        "release_date": "2015-10-23",
+        "vote_average": 6.549,
+        "popularidade": 28.6528
+      },
+      {
+        "id": 713364,
+        "title": "Clown in a Cornfield",
+        "release_date": "2025-05-08",
+        "vote_average": 6.211,
+        "popularidade": 31.3506
+      },
+      {
+        "id": 259693,
+        "title": "The Conjuring 2",
+        "release_date": "2016-06-08",
+        "vote_average": 7.289,
+        "popularidade": 33.1941
+      },
+      {
+        "id": 933260,
+        "title": "The Substance",
+        "release_date": "2024-09-07",
+        "vote_average": 7.146,
+        "popularidade": 27.0825
+      },
+      {
+        "id": 1452176,
+        "title": "Abraham's Boys",
+        "release_date": "2025-07-11",
+        "vote_average": 5.5,
+        "popularidade": 29.7985
+      }
+    ]
+  }
+}

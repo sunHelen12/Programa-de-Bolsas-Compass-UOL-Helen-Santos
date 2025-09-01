@@ -1,0 +1,211 @@
+[
+  {
+    "diretor": "David Fincher",
+    "id": 7467,
+    "nome": "David Fincher",
+    "popularidade": 1.5323,
+    "filmografia_suspense_misterio": [
+      {
+        "id": 800158,
+        "title": "The Killer",
+        "release_date": "2023-10-25",
+        "vote_average": 6.577,
+        "vote_count": 2471,
+        "overview": "After a fateful miss, an assassin battles his employers, and himself, on an international manhunt he insists isn't personal.",
+        "genre_ids": [
+          80,
+          53
+        ]
+      },
+      {
+        "id": 210577,
+        "title": "Gone Girl",
+        "release_date": "2014-10-01",
+        "vote_average": 7.89,
+        "vote_count": 19221,
+        "overview": "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.",
+        "genre_ids": [
+          9648,
+          53,
+          18
+        ]
+      },
+      {
+        "id": 65754,
+        "title": "The Girl with the Dragon Tattoo",
+        "release_date": "2011-12-14",
+        "vote_average": 7.376,
+        "vote_count": 7260,
+        "overview": "Disgraced journalist Mikael Blomkvist investigates the disappearance of a weary patriarch's niece from 40 years ago. He is aided by the pierced, tattooed, punk computer hacker named Lisbeth Salander. As they work together in the investigation, Blomkvist and Salander uncover immense corruption beyond anything they have ever imagined.",
+        "genre_ids": [
+          53,
+          80,
+          9648
+        ]
+      },
+      {
+        "id": 1949,
+        "title": "Zodiac",
+        "release_date": "2007-03-02",
+        "vote_average": 7.528,
+        "vote_count": 11006,
+        "overview": "The Zodiac murders cause the lives of Paul Avery, David Toschi and Robert Graysmith to intersect.",
+        "genre_ids": [
+          80,
+          9648,
+          53
+        ]
+      },
+      {
+        "id": 4547,
+        "title": "Panic Room",
+        "release_date": "2002-03-29",
+        "vote_average": 6.788,
+        "vote_count": 5158,
+        "overview": "Trapped in their New York brownstone's panic room, a hidden chamber built as a sanctuary in the event of break-ins, newly divorced Meg Altman and her young daughter Sarah play a deadly game of cat-and-mouse with three intruders - Burnham, Raoul and Junior - during a brutal home invasion. But the room itself is the focal point because what the intruders really want is inside it.",
+        "genre_ids": [
+          80,
+          18,
+          53
+        ]
+      },
+      {
+        "id": 550,
+        "title": "Fight Club",
+        "release_date": "1999-10-15",
+        "vote_average": 8.437,
+        "vote_count": 30677,
+        "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+        "genre_ids": [
+          18,
+          53
+        ]
+      },
+      {
+        "id": 2649,
+        "title": "The Game",
+        "release_date": "1997-09-12",
+        "vote_average": 7.567,
+        "vote_count": 6940,
+        "overview": "In honor of his birthday, San Francisco banker Nicholas Van Orton, a financial genius and a cold-hearted loner, receives an unusual present from his younger brother, Conrad: a gift certificate to play a unique kind of game. In nary a nanosecond, Nicholas finds himself consumed by a dangerous set of ever-changing rules, unable to distinguish where the charade ends and reality begins.",
+        "genre_ids": [
+          18,
+          53,
+          9648
+        ]
+      },
+      {
+        "id": 807,
+        "title": "Se7en",
+        "release_date": "1995-09-22",
+        "vote_average": 8.377,
+        "vote_count": 22026,
+        "overview": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins\" in this dark and haunting film that takes viewers from the tortured remains of one victim to the next. The seasoned Det. Somerset researches each sin in an effort to get inside the killer's mind, while his novice partner, Mills, scoffs at his efforts to unravel the case.",
+        "genre_ids": [
+          80,
+          9648,
+          53
+        ]
+      }
+    ]
+  },
+  {
+    "diretor": "Christopher Nolan",
+    "id": 525,
+    "nome": "Christopher Nolan",
+    "popularidade": 2.797,
+    "filmografia_suspense_misterio": [
+      {
+        "id": 577922,
+        "title": "Tenet",
+        "release_date": "2020-08-22",
+        "vote_average": 7.176,
+        "vote_count": 10437,
+        "overview": "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
+        "genre_ids": [
+          28,
+          53,
+          878
+        ]
+      },
+      {
+        "id": 49026,
+        "title": "The Dark Knight Rises",
+        "release_date": "2012-07-17",
+        "vote_average": 7.786,
+        "vote_count": 23483,
+        "overview": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
+        "genre_ids": [
+          28,
+          80,
+          18,
+          53
+        ]
+      },
+      {
+        "id": 155,
+        "title": "The Dark Knight",
+        "release_date": "2008-07-16",
+        "vote_average": 8.522,
+        "vote_count": 34303,
+        "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+        "genre_ids": [
+          18,
+          28,
+          80,
+          53
+        ]
+      },
+      {
+        "id": 1124,
+        "title": "The Prestige",
+        "release_date": "2006-10-17",
+        "vote_average": 8.203,
+        "vote_count": 16748,
+        "overview": "A mysterious story of two magicians whose intense rivalry leads them on a life-long battle for supremacy -- full of obsession, deceit and jealousy with dangerous and deadly consequences.",
+        "genre_ids": [
+          18,
+          9648,
+          878
+        ]
+      },
+      {
+        "id": 320,
+        "title": "Insomnia",
+        "release_date": "2002-05-24",
+        "vote_average": 7.0,
+        "vote_count": 4946,
+        "overview": "Two Los Angeles homicide detectives are dispatched to a northern town where the sun doesn't set to investigate the methodical murder of a local teen.",
+        "genre_ids": [
+          53,
+          80,
+          18
+        ]
+      },
+      {
+        "id": 77,
+        "title": "Memento",
+        "release_date": "2000-10-11",
+        "vote_average": 8.178,
+        "vote_count": 15495,
+        "overview": "Leonard Shelby is tracking down the man who raped and murdered his wife. The difficulty of locating his wife's killer, however, is compounded by the fact that he suffers from a rare, untreatable form of short-term memory loss. Although he can recall details of life before his accident, Leonard cannot remember what happened fifteen minutes ago, where he's going, or why.",
+        "genre_ids": [
+          9648,
+          53
+        ]
+      },
+      {
+        "id": 11660,
+        "title": "Following",
+        "release_date": "1999-05-06",
+        "vote_average": 7.1,
+        "vote_count": 1708,
+        "overview": "Bill, an idle, unemployed aspiring writer, walks the crowded streets of London following randomly chosen strangers, a seemingly innocent entertainment that becomes dangerous when he crosses paths with a mysterious character.",
+        "genre_ids": [
+          18,
+          53
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,254 @@
+{
+  "stephen_king": {
+    "quantidade": 20,
+    "nota_media": 6.617749999999999,
+    "filmes": [
+      {
+        "id": 278,
+        "title": "The Shawshank Redemption",
+        "release_date": "1994-09-23",
+        "vote_average": 8.712
+      },
+      {
+        "id": 842924,
+        "title": "The Life of Chuck",
+        "release_date": "2025-06-05",
+        "vote_average": 7.311
+      },
+      {
+        "id": 497,
+        "title": "The Green Mile",
+        "release_date": "1999-12-10",
+        "vote_average": 8.503
+      },
+      {
+        "id": 1124620,
+        "title": "The Monkey",
+        "release_date": "2025-02-14",
+        "vote_average": 5.995
+      },
+      {
+        "id": 604079,
+        "title": "The Long Walk",
+        "release_date": "2025-09-10",
+        "vote_average": 0.0
+      },
+      {
+        "id": 694,
+        "title": "The Shining",
+        "release_date": "1980-05-23",
+        "vote_average": 8.21
+      },
+      {
+        "id": 346364,
+        "title": "It",
+        "release_date": "2017-09-06",
+        "vote_average": 7.237
+      },
+      {
+        "id": 474350,
+        "title": "It Chapter Two",
+        "release_date": "2019-09-04",
+        "vote_average": 6.832
+      },
+      {
+        "id": 353491,
+        "title": "The Dark Tower",
+        "release_date": "2017-08-03",
+        "vote_average": 5.782
+      },
+      {
+        "id": 7340,
+        "title": "Carrie",
+        "release_date": "1976-11-03",
+        "vote_average": 7.3
+      },
+      {
+        "id": 865,
+        "title": "The Running Man",
+        "release_date": "1987-11-13",
+        "vote_average": 6.543
+      },
+      {
+        "id": 5876,
+        "title": "The Mist",
+        "release_date": "2007-11-21",
+        "vote_average": 6.939
+      },
+      {
+        "id": 235,
+        "title": "Stand by Me",
+        "release_date": "1986-08-08",
+        "vote_average": 7.851
+      },
+      {
+        "id": 1700,
+        "title": "Misery",
+        "release_date": "1990-11-30",
+        "vote_average": 7.7
+      },
+      {
+        "id": 501170,
+        "title": "Doctor Sleep",
+        "release_date": "2019-10-30",
+        "vote_average": 7.144
+      },
+      {
+        "id": 748230,
+        "title": "Salem's Lot",
+        "release_date": "2024-10-03",
+        "vote_average": 6.082
+      },
+      {
+        "id": 133805,
+        "title": "Carrie",
+        "release_date": "2013-10-16",
+        "vote_average": 6.0
+      },
+      {
+        "id": 157433,
+        "title": "Pet Sematary",
+        "release_date": "2019-04-04",
+        "vote_average": 5.743
+      },
+      {
+        "id": 8769,
+        "title": "Christine",
+        "release_date": "1983-12-09",
+        "vote_average": 6.871
+      },
+      {
+        "id": 6171,
+        "title": "Dreamcatcher",
+        "release_date": "2003-03-21",
+        "vote_average": 5.6
+      }
+    ]
+  },
+  "originais": {
+    "quantidade": 20,
+    "nota_media": 6.4985,
+    "filmes": [
+      {
+        "id": 1242011,
+        "title": "Together",
+        "release_date": "2025-07-23",
+        "vote_average": 7.187
+      },
+      {
+        "id": 1083433,
+        "title": "I Know What You Did Last Summer",
+        "release_date": "2025-07-16",
+        "vote_average": 5.835
+      },
+      {
+        "id": 1078605,
+        "title": "Weapons",
+        "release_date": "2025-08-04",
+        "vote_average": 7.462
+      },
+      {
+        "id": 1389158,
+        "title": "Maa",
+        "release_date": "2025-06-20",
+        "vote_average": 7.2
+      },
+      {
+        "id": 1241470,
+        "title": "Osiris",
+        "release_date": "2025-07-25",
+        "vote_average": 6.587
+      },
+      {
+        "id": 926606,
+        "title": "The Home",
+        "release_date": "2025-07-24",
+        "vote_average": 6.313
+      },
+      {
+        "id": 986206,
+        "title": "Night Carnage",
+        "release_date": "2025-07-29",
+        "vote_average": 5.9
+      },
+      {
+        "id": 1443260,
+        "title": "Rob1n",
+        "release_date": "2025-03-20",
+        "vote_average": 5.1
+      },
+      {
+        "id": 574475,
+        "title": "Final Destination Bloodlines",
+        "release_date": "2025-05-14",
+        "vote_average": 7.148
+      },
+      {
+        "id": 1151031,
+        "title": "Bring Her Back",
+        "release_date": "2025-05-28",
+        "vote_average": 7.38
+      },
+      {
+        "id": 1100988,
+        "title": "28 Years Later",
+        "release_date": "2025-06-18",
+        "vote_average": 6.766
+      },
+      {
+        "id": 1038392,
+        "title": "The Conjuring: Last Rites",
+        "release_date": "2025-09-03",
+        "vote_average": 7.0
+      },
+      {
+        "id": 1393382,
+        "title": "Popeye's Revenge",
+        "release_date": "2025-02-12",
+        "vote_average": 5.2
+      },
+      {
+        "id": 1227003,
+        "title": "Shadow of God",
+        "release_date": "2025-03-26",
+        "vote_average": 5.7
+      },
+      {
+        "id": 1020822,
+        "title": "Animale",
+        "release_date": "2024-09-20",
+        "vote_average": 6.656
+      },
+      {
+        "id": 1422052,
+        "title": "Descendent",
+        "release_date": "2025-08-08",
+        "vote_average": 6.065
+      },
+      {
+        "id": 138843,
+        "title": "The Conjuring",
+        "release_date": "2013-07-18",
+        "vote_average": 7.539
+      },
+      {
+        "id": 1339166,
+        "title": "Shaman",
+        "release_date": "2025-07-16",
+        "vote_average": 5.575
+      },
+      {
+        "id": 1278950,
+        "title": "The Ritual",
+        "release_date": "2025-04-18",
+        "vote_average": 5.816
+      },
+      {
+        "id": 1233413,
+        "title": "Sinners",
+        "release_date": "2025-04-16",
+        "vote_average": 7.541
+      }
+    ]
+  }
+}

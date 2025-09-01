@@ -34,10 +34,6 @@ response = requests.get(url)
 data = response.json()
 # Imprime no console identada e formatada
 print(json.dumps(data, indent=4, ensure_ascii=False))
-# Inicializando lista para receber filmes
-filmes = []
-for movie in data['results']:
-    df = {'Titulo': movie['title'],}
 
 # Salvando dados no arquivo  
 with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:

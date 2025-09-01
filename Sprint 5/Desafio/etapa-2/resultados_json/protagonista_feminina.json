@@ -1,0 +1,453 @@
+{
+  "anos_80": {
+    "quantidade_filmes": 16,
+    "nota_media": 4.733,
+    "total_votos": 11581,
+    "filmes": [
+      {
+        "id": 173705,
+        "title": "Female Teacher: In Front of the Students",
+        "release_date": "1982-04-09",
+        "vote_average": 6.4,
+        "vote_count": 35,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Rushia Santô"
+      },
+      {
+        "id": 377,
+        "title": "A Nightmare on Elm Street",
+        "release_date": "1984-11-09",
+        "vote_average": 7.341,
+        "vote_count": 5409,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Heather Langenkamp"
+      },
+      {
+        "id": 80788,
+        "title": "Beautiful Teacher in Torture Hell",
+        "release_date": "1985-12-14",
+        "vote_average": 5.3,
+        "vote_count": 34,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Ran Masaki"
+      },
+      {
+        "id": 4488,
+        "title": "Friday the 13th",
+        "release_date": "1980-05-09",
+        "vote_average": 6.418,
+        "vote_count": 3120,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Adrienne King"
+      },
+      {
+        "id": 1355634,
+        "title": "The Garden of Blood",
+        "release_date": "1987-02-13",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Yousra"
+      },
+      {
+        "id": 667655,
+        "title": "Nightmare",
+        "release_date": "1989-03-06",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Yousra"
+      },
+      {
+        "id": 1317101,
+        "title": "A Trip of Terror",
+        "release_date": "1981-07-21",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Madiha Kamel"
+      },
+      {
+        "id": 9730,
+        "title": "Friday the 13th: The Final Chapter",
+        "release_date": "1984-04-13",
+        "vote_average": 6.134,
+        "vote_count": 1410,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Judie Aronson"
+      },
+      {
+        "id": 27400,
+        "title": "Black Candles",
+        "release_date": "1982-04-03",
+        "vote_average": 6.217,
+        "vote_count": 138,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Helga Liné"
+      },
+      {
+        "id": 38500,
+        "title": "Howling IV: The Original Nightmare",
+        "release_date": "1988-11-01",
+        "vote_average": 4.517,
+        "vote_count": 120,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Romy Walthall"
+      },
+      {
+        "id": 329505,
+        "title": "Lola's Secret",
+        "release_date": "1984-05-04",
+        "vote_average": 7.1,
+        "vote_count": 65,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Donatella Damiani"
+      },
+      {
+        "id": 21484,
+        "title": "Possession",
+        "release_date": "1981-05-27",
+        "vote_average": 7.4,
+        "vote_count": 1201,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Isabelle Adjani"
+      },
+      {
+        "id": 380847,
+        "title": "Moodupani",
+        "release_date": "1980-11-06",
+        "vote_average": 4.0,
+        "vote_count": 3,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Shoba"
+      },
+      {
+        "id": 89315,
+        "title": "Terror Express",
+        "release_date": "1980-01-10",
+        "vote_average": 5.6,
+        "vote_count": 28,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Silvia Dionisio"
+      },
+      {
+        "id": 185652,
+        "title": "Female Teacher in Rope Hell",
+        "release_date": "1981-08-27",
+        "vote_average": 4.5,
+        "vote_count": 13,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Junko Mabuki"
+      },
+      {
+        "id": 186723,
+        "title": "Haunted Tales",
+        "release_date": "1980-04-19",
+        "vote_average": 4.8,
+        "vote_count": 5,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Ching Li"
+      }
+    ]
+  },
+  "anos_2020": {
+    "quantidade_filmes": 32,
+    "nota_media": 6.757,
+    "total_votos": 70752,
+    "filmes": [
+      {
+        "id": 1020822,
+        "title": "Animale",
+        "release_date": "2024-09-20",
+        "vote_average": 6.7,
+        "vote_count": 15,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Oulaya Amamra"
+      },
+      {
+        "id": 1164355,
+        "title": "Lembayung",
+        "release_date": "2024-09-19",
+        "vote_average": 7.2,
+        "vote_count": 10,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Taskya Namya"
+      },
+      {
+        "id": 933260,
+        "title": "The Substance",
+        "release_date": "2024-09-07",
+        "vote_average": 7.146,
+        "vote_count": 4995,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Demi Moore"
+      },
+      {
+        "id": 945961,
+        "title": "Alien: Romulus",
+        "release_date": "2024-08-13",
+        "vote_average": 7.182,
+        "vote_count": 3916,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Cailee Spaeny"
+      },
+      {
+        "id": 968051,
+        "title": "The Nun II",
+        "release_date": "2023-09-06",
+        "vote_average": 6.7,
+        "vote_count": 2249,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Taissa Farmiga"
+      },
+      {
+        "id": 426063,
+        "title": "Nosferatu",
+        "release_date": "2024-12-25",
+        "vote_average": 6.709,
+        "vote_count": 3007,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Lily-Rose Depp"
+      },
+      {
+        "id": 1034541,
+        "title": "Terrifier 3",
+        "release_date": "2024-10-09",
+        "vote_average": 6.836,
+        "vote_count": 1701,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Lauren LaVera"
+      },
+      {
+        "id": 1268870,
+        "title": "Nudus",
+        "release_date": "2024-04-11",
+        "vote_average": 7.0,
+        "vote_count": 2,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Carla Hernández"
+      },
+      {
+        "id": 1100782,
+        "title": "Smile 2",
+        "release_date": "2024-10-16",
+        "vote_average": 6.603,
+        "vote_count": 1759,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Naomi Scott"
+      },
+      {
+        "id": 675308,
+        "title": "Lingering",
+        "release_date": "2020-04-29",
+        "vote_average": 6.354,
+        "vote_count": 24,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Lee Se-young"
+      },
+      {
+        "id": 1041613,
+        "title": "Immaculate",
+        "release_date": "2024-03-20",
+        "vote_average": 6.2,
+        "vote_count": 1480,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Sydney Sweeney"
+      },
+      {
+        "id": 1008042,
+        "title": "Talk to Me",
+        "release_date": "2023-07-26",
+        "vote_average": 7.152,
+        "vote_count": 3365,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Sophie Wilde"
+      },
+      {
+        "id": 1029235,
+        "title": "Azrael",
+        "release_date": "2024-09-27",
+        "vote_average": 6.012,
+        "vote_count": 346,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Samara Weaving"
+      },
+      {
+        "id": 646385,
+        "title": "Scream",
+        "release_date": "2022-01-12",
+        "vote_average": 6.7,
+        "vote_count": 3554,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Melissa Barrera"
+      },
+      {
+        "id": 762441,
+        "title": "A Quiet Place: Day One",
+        "release_date": "2024-06-26",
+        "vote_average": 6.706,
+        "vote_count": 2920,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Lupita Nyong'o"
+      },
+      {
+        "id": 713704,
+        "title": "Evil Dead Rise",
+        "release_date": "2023-04-12",
+        "vote_average": 6.9,
+        "vote_count": 3363,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Lily Sullivan"
+      },
+      {
+        "id": 1020910,
+        "title": "Influencer",
+        "release_date": "2023-05-18",
+        "vote_average": 6.229,
+        "vote_count": 277,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Cassandra Naud"
+      },
+      {
+        "id": 536554,
+        "title": "M3GAN",
+        "release_date": "2022-12-28",
+        "vote_average": 7.057,
+        "vote_count": 4446,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Allison Williams"
+      },
+      {
+        "id": 1226578,
+        "title": "Longlegs",
+        "release_date": "2024-07-10",
+        "vote_average": 6.559,
+        "vote_count": 2213,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Maika Monroe"
+      },
+      {
+        "id": 913290,
+        "title": "Barbarian",
+        "release_date": "2022-09-08",
+        "vote_average": 6.836,
+        "vote_count": 2827,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Georgina Campbell"
+      },
+      {
+        "id": 760104,
+        "title": "X",
+        "release_date": "2022-03-17",
+        "vote_average": 6.743,
+        "vote_count": 3628,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Mia Goth"
+      },
+      {
+        "id": 593643,
+        "title": "The Menu",
+        "release_date": "2022-11-17",
+        "vote_average": 7.174,
+        "vote_count": 5525,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Anya Taylor-Joy"
+      },
+      {
+        "id": 1029281,
+        "title": "Strange Darling",
+        "release_date": "2023-08-14",
+        "vote_average": 6.934,
+        "vote_count": 679,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Willa Fitzgerald"
+      },
+      {
+        "id": 1064028,
+        "title": "Subservience",
+        "release_date": "2024-08-15",
+        "vote_average": 6.666,
+        "vote_count": 836,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Megan Fox"
+      },
+      {
+        "id": 1125510,
+        "title": "The Platform 2",
+        "release_date": "2024-09-27",
+        "vote_average": 5.5,
+        "vote_count": 1259,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Milena Smit"
+      },
+      {
+        "id": 520763,
+        "title": "A Quiet Place Part II",
+        "release_date": "2021-05-21",
+        "vote_average": 7.461,
+        "vote_count": 6941,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Emily Blunt"
+      },
+      {
+        "id": 934433,
+        "title": "Scream VI",
+        "release_date": "2023-03-08",
+        "vote_average": 7.0,
+        "vote_count": 2879,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Melissa Barrera"
+      },
+      {
+        "id": 1357933,
+        "title": "The Cellar",
+        "release_date": "2024-10-06",
+        "vote_average": 7.4,
+        "vote_count": 12,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Meghan Adara"
+      },
+      {
+        "id": 882598,
+        "title": "Smile",
+        "release_date": "2022-09-23",
+        "vote_average": 6.664,
+        "vote_count": 3707,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Sosie Bacon"
+      },
+      {
+        "id": 974931,
+        "title": "Totally Killer",
+        "release_date": "2023-09-28",
+        "vote_average": 6.812,
+        "vote_count": 988,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Kiernan Shipka"
+      },
+      {
+        "id": 1111873,
+        "title": "Abigail",
+        "release_date": "2024-04-16",
+        "vote_average": 6.734,
+        "vote_count": 1670,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Melissa Barrera"
+      },
+      {
+        "id": 1208808,
+        "title": "Night Shift",
+        "release_date": "2024-12-05",
+        "vote_average": 6.362,
+        "vote_count": 159,
+        "protagonista_feminina": true,
+        "nome_protagonista": "Paulina Gaitán"
+      }
+    ]
+  },
+  "comparacao": {
+    "diferenca_quantidade": 16,
+    "diferenca_nota_media": 2.024,
+    "aumento_percentual_quantidade": 100.0
+  }
+}
