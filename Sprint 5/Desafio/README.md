@@ -118,6 +118,8 @@ A linha abaixo é uma das partes mais importantes. Usando uma f-string, e a data
 
 Obtive os resultados abaixo:
 
+![Estrutura da Pasta para o Arquivo movies.csv](../Evidencias/Desafio/etapa-1/04-estrutura-1.png)
+
 ![Estrutura da Pasta para o Arquivo series.csv](../Evidencias/Desafio/etapa-1/04-estrutura-2.png)
 
 No trecho abaixo, o bloco `try...except` garante que, se ocorrer um erro durante o upload, o programa não irá travar. Em seguida, a função `cliente_s3.upload_file` do `boto3` é chamada para realizar o upload, recebendo três parâmetros principais:
