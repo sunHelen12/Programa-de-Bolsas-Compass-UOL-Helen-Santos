@@ -25,7 +25,7 @@
 
 ## Parte 1 - Geração e massa de dados
 
-Neste primeiro bloco, o script foca na manipulação de dados numéricos. Ele inicia criando uma lista com 250 números inteiros aleatórios, variando de 1 a 1000. Após exibir a lista original no terminal para verificação.
+Neste primeiro bloco, o script foca na manipulação de dados numéricos. Ele inicia criando uma lista com 250 números inteiros aleatórios, variando de 1 a 1000 e exibe a lista original no terminal para verificação.
 
 ```
 numeros_aleatorios = [random.randint(1, 1000) for _ in range(250)]
@@ -93,7 +93,7 @@ with open(arquivo_animais, 'w', encoding='utf-8') as arquivo:
 print(f"\nLista de animais salva no arquivo '{arquivo_animais}'.")
 ```
 
-Abaixo, arquivo de texto com lista de Animais:
+Abaixo, arquivo de texto contendo lista de Animais:
 
 [Arquivo de Texto Contendo Lista de Animais](./Exercicios/01-Parte-1-Geracao-e-massa-de-dados/respostas/lista_animais.txt)
 
@@ -118,7 +118,7 @@ for i in range(qtd_nomes_unicos):
 print("Base de nomes únicos criada.")
 ```
 
-A partir dessa base, será gerado uma lista final contendo 10 milhões de nomes, selecionados aleatoriamente do conjunto inicial. 
+A partir dessa base, será gerada uma lista final contendo 10 milhões de nomes, selecionados aleatoriamente do conjunto inicial. 
 
 ```
 print(f"Gerando {qtd_nomes_aleatorios} nomes aleatórios...")
@@ -128,6 +128,8 @@ for i in range(qtd_nomes_aleatorios):
 ```
 
 Por fim, essa lista massiva é escrita em um arquivo `nomes_aleatorios.txt` na pasta respostas. O código também mede e informa o tempo exato, em segundos, que a operação de escrita no arquivo levou para ser concluída, oferecendo uma métrica de desempenho para a manipulação de grandes volumes de dados.
+
+*Obs: O arquivo `nomes_aleatorios.txt` não foi enviado ao repositório no GitHub, pois é um arquivo muito grande.*
 
 ```
 arquivo_nomes = pasta_respostas / "nomes_aleatorios.txt"
@@ -150,7 +152,7 @@ Obtive esse resultado no console:
 
 ![Saída no Console](./Evidencias/Exercicios/01-Parte-1-Geracao-e-massa-de-dados/03-nomes.png)
 
-Abaixo, arquivo de texto com lista de nomes:
+Abaixo, arquivo de texto contendo lista de nomes:
 
 [Arquivo de Texto Contendo Nomes Aleatórios](./Exercicios/01-Parte-1-Geracao-e-massa-de-dados/respostas/nomes_aleatorios.txt)
 
@@ -364,7 +366,7 @@ Primeiramente foi realizado o upload do arquivo `nomes.csv` para o bucket do S3 
 
 ![Bucket S3](./Evidencias/Exercicios/03-Lab-AWS-Glue/01-upload-objetos.png)
 
-Em seguida foi craido um novo role chamado `AWSGlueServiceRole-Lab4`, associada a policies geridas pela AWS `AmazonS3FullAccess`,`AWSLakeFormationDataAdmin`,`AWSGlueConsoleFullAccess` e `CloudWatchFullAccess`. Isso foi importante para a permissão do acesso do serviço do Glue ao S3.
+Em seguida foi criado um novo role chamado `AWSGlueServiceRole-Lab4`, associado a policies geridas pela AWS `AmazonS3FullAccess`,`AWSLakeFormationDataAdmin`,`AWSGlueConsoleFullAccess` e `CloudWatchFullAccess`. Isso foi importante para a permissão do acesso do serviço do Glue ao S3.
 
 ![IAM Role](./Evidencias/Exercicios/03-Lab-AWS-Glue/07-IAM.png)
 
@@ -372,7 +374,7 @@ Após isso, o AWS Glue foi preparado e configurado para utilizar o IAM Role cria
 
 ![Cconfiguração do Glue](./Evidencias/Exercicios/03-Lab-AWS-Glue/05-glue.png)
 
-Posteriormente foi criado o banco de dados para adição automatica de uma tabela a partir dos dados armazenados no S3. Isso foi permitido pelo AWS Lake Formation que é um serviço que facilita da criação e gerenciamento de data lakes.
+Posteriormente foi criado o banco de dados para adição automática de uma tabela a partir dos dados armazenados no S3. Isso foi permitido pelo AWS Lake Formation que é um serviço que facilita a criação e gerenciamento de data lakes.
 
 ![Database Glue](./Evidencias/Exercicios/03-Lab-AWS-Glue/06-glue-database.png)
 
@@ -398,7 +400,7 @@ E esses foram os resultados no S3:
 
 ![S3 Bucket - Sexo Masculino](./Evidencias/Exercicios/03-Lab-AWS-Glue/16-bucket-s3.png)
 
-![S3 Bucket - Sexo Femino(Arquivo)](./Evidencias/Exercicios/03-Lab-AWS-Glue/15-bucket-s3.png)
+![S3 Bucket - Sexo Feminino(Arquivo)](./Evidencias/Exercicios/03-Lab-AWS-Glue/15-bucket-s3.png)
 
 Após isso foi desenvolvido um crawler para que fosse criada uma tabela chamada `frequencia_registro_nomes_eua` a partir dos dados escritos no S3.
 
@@ -419,11 +421,11 @@ Abaixo está o arquivo com o resultado da consulta:
 
 Certificado do Curso *Fundamentals of Analytics on AWS – Part 2 (Português)*
 
-![Curso - Fundamentals of Analytics on AWS – Part 2 (Português)](./Certificados/imgs/Helen-Santos-Certicado-1.png)
+![Curso - Fundamentals of Analytics on AWS – Part 2 (Português)](./Certificados/imgs/Helen-Santos-Certificado-1.png)
 
 Certificado do Curso *AWS Glue Getting Started (Português)*
 
-![Curso - AWS Glue Getting Started (Português)](./Certificados/imgs/Helen-Santos-Certicado-2.png)
+![Curso - AWS Glue Getting Started (Português)](./Certificados/imgs/Helen-Santos-Certificado-2.png)
 
 Comprovante de Conclusão do Curso *AWS - Tutoriais Técnicos - Analytics*
 
