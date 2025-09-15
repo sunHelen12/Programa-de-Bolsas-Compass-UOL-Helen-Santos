@@ -45,9 +45,9 @@ logger.info(f"Leitura concluída. Total de registros lidos: {df.count()}")
 # Renomeando Colunas
 logger.info("Iniciando renomeação de colunas para o padrão...")
 column_mapping = {
-    'id': 'id_filme', 'tituloPincipal': 'titulo_principal', 'tipoTitulo': 'tipo_titulo',
+    'id': 'id_filme', 'tituloPincipal': 'titulo_principal', 'tituloOriginal': 'titulo_original',
     'anoLancamento': 'ano_lancamento', 'tempoMinutos': 'tempo_minutos', 'genero': 'genero',
-    'notaMedia': 'nota_media', 'numeroVotos': 'numero_votos', 'idArtista': 'id_artista',
+    'notaMedia': 'nota_media', 'numeroVotos': 'numero_votos', 'generoArtista': 'genero_artista', 
     'nomeArtista': 'nome_artista', 'anoNascimento': 'ano_nascimento', 'anoFalecimento': 'ano_falecimento',
     'profissao': 'profissao', 'titulosMaisConhecidos': 'titulos_mais_conhecidos', 'personagem': 'personagem'
 }
