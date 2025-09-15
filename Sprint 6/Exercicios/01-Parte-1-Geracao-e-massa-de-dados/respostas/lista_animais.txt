@@ -1,0 +1,21 @@
+============Lista de Animais============
+Abelha
+Arara
+Beija-Flor
+Cachorro
+Cavalo
+Chinchilla
+Coala
+Coelho
+Coruja
+Esquilo
+Furão
+Gato
+Girafa
+Leão
+Lhama
+Raposa
+Tamanduá
+Tigre
+Urso
+Zebra
