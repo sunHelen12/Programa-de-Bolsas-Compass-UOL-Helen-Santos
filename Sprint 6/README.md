@@ -131,6 +131,9 @@ Por fim, essa lista massiva é escrita em um arquivo `nomes_aleatorios.txt` na p
 
 *Obs: O arquivo `nomes_aleatorios.txt` não foi enviado ao repositório no GitHub, pois é um arquivo muito grande.*
 
+
+![Lista de Nomes](./Evidencias/Exercicios/01-Parte-1-Geracao-e-massa-de-dados/04-lista-nomes.png)
+
 ```
 arquivo_nomes = pasta_respostas / "nomes_aleatorios.txt"
 print(f"Escrevendo nomes no arquivo '{arquivo_nomes}'...")
@@ -151,10 +154,6 @@ print(f"Tempo de escrita no arquivo: {tempo_total:.2f} segundos.")
 Obtive esse resultado no console:
 
 ![Saída no Console](./Evidencias/Exercicios/01-Parte-1-Geracao-e-massa-de-dados/03-nomes.png)
-
-Abaixo, arquivo de texto contendo lista de nomes:
-
-[Arquivo de Texto Contendo Nomes Aleatórios](./Exercicios/01-Parte-1-Geracao-e-massa-de-dados/respostas/nomes_aleatorios.txt)
 
 ## Parte 2 - Apache Spark
 
