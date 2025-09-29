@@ -97,7 +97,6 @@ except Exception as e:
 def processando_comparacao(nome_arquivo, colunas, coluna_nova):
     try:
         logger.info(f"Processando arquivo {nome_arquivo}...")
-        # Leitura do arquivo dentro da função 
         df_filtrado = spark.read.option("multiline", "true").json(f"{S3_INPUT_PATH}{nome_arquivo}.json")
         
         if df_filtrado.rdd.isEmpty():
@@ -115,12 +114,14 @@ def processando_comparacao(nome_arquivo, colunas, coluna_nova):
 
         if df_uniao:
             df_final = df_uniao.select(
-                col(coluna_nova), col("filme.id").alias("filme_id"), col("filme.title").alias("filme_titulo"),
-                col("filme.release_date").alias("filme_data_lancamento"), col("filme.vote_average").alias("filme_nota_media")
+                col(coluna_nova), 
+                col("filme.id").alias("filme_id"), 
+                col("filme.title").alias("filme_titulo"), 
+                col("filme.release_date").alias("filme_data_lancamento"), 
+                col("filme.vote_average").alias("filme_nota_media")
             )
             df_final = df_final.filter(col("filme_id").isNotNull())
             logger.info(f"Total de registros para '{nome_arquivo}' após limpeza: {df_final.count()}")
-            # O nome do arquivo não precisa do .json no final para o nome da tabela
             salvano_trusted_zone(df_final, f"{nome_arquivo}_trusted")
     except Exception as e:
         logger.error(f"Erro ao processar arquivo de comparação '{nome_arquivo}': {e}")
