@@ -160,12 +160,13 @@ Após o download, o script inicia a fase de transformação. Utilizando `pandas`
 ```
     print("Renomeando colunas...")
     column_mapping = {
-        'id': 'id_filme', 'tituloPincipal': 'titulo_principal', 'tipoTitulo': 'tipo_titulo', 
-        'anoLancamento': 'ano_lancamento', 'tempoMinutos': 'tempo_minutos', 'genero': 'genero', 
-        'notaMedia': 'nota_media', 'numeroVotos': 'numero_votos', 'idArtista': 'id_artista', 
-        'nomeArtista': 'nome_artista', 'anoNascimento': 'ano_nascimento', 'anoFalecimento': 'ano_falecimento', 
+        'id': 'id_filme', 'tituloPincipal': 'titulo_principal', 'tituloOriginal': 'titulo_original',
+        'anoLancamento': 'ano_lancamento', 'tempoMinutos': 'tempo_minutos', 'genero': 'genero',
+        'notaMedia': 'nota_media', 'numeroVotos': 'numero_votos', 'generoArtista': 'genero_artista', 
+        'nomeArtista': 'nome_artista', 'anoNascimento': 'ano_nascimento', 'anoFalecimento': 'ano_falecimento',
         'profissao': 'profissao', 'titulosMaisConhecidos': 'titulos_mais_conhecidos', 'personagem': 'personagem'
     }
+    
     df.rename(columns=column_mapping, inplace=True)
     
     print("Tratando valores ausentes e ajustando tipos...")
