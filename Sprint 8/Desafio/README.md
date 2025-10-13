@@ -17,7 +17,7 @@ Uma mudança importante foi a remoção das colunas de auditoria (`data_criacao`
 1. ... [Etapa I](./etapa-1/Grafico_Analise.pdf)
 
 
-## Criação da View `vw_filmes_analise`
+## Criação da View: `vw_filmes_analise`
 
 A view `vw_filmes_analise` foi criada no banco `refined_db_atualizado` no AWS Athena com o objetivo de centralizar as principais informações necessárias para as análises de desempenho e tendências em filmes de terror e Mistério.
 
@@ -181,7 +181,7 @@ Dessa forma, a experiência do usuário é enriquecida, unindo a precisão da an
 
 ## Análises 
 
-### Quantidade de filmes de terror com protagonistas femininas por década
+### 1\. Quantidade de filmes de terror com protagonistas femininas por década
 
 A Evolução da Protagonista Feminina: Comparando a década de 80 com a de 2010, filmes de terror com protagonistas femininas se tornaram mais comuns? 
 
@@ -191,7 +191,7 @@ A Evolução da Protagonista Feminina: Comparando a década de 80 com a de 2010,
 
 **Conclusão**: Entre 1980 e 2020, os filmes de terror com protagonistas femininas deixaram de ocupar um espaço limitado, o arquétipo previsível da “final girl” para representar uma parte significativa das produções do gênero. Esse crescimento evidencia uma transformação dupla: a evolução da representação feminina no terror e a ampliação do espaço da indústria para narrativas conduzidas por mulheres. Ainda assim, observa-se uma leve queda na quantidade de títulos a partir da década de 2010, sugerindo que, embora o protagonismo feminino tenha conquistado força, ele ainda enfrenta oscilações dentro do mercado cinematográfico. 
 
-### Comparativo de Nota Média entre Filmes de Terror Leve (PG-13) e Restrito (R)
+### 2\. Comparativo de Nota Média entre Filmes de Terror Leve (PG-13) e Restrito (R)
 
 O Reinado dos Ícones Masculinos do Terror Moderno: Quem são os atores que definem o terror moderno? Analisando a filmografia de atores proeminentes no gênero pós-anos 2000, qual deles construiu a carreira mais impactante em termos de número de filmes, nota média e sucesso de bilheteria?
 
@@ -223,7 +223,7 @@ A intenção foi isolar essas duas categorias de forma clara e mensurável, perm
 
 **Conclusão**: Os resultados evidenciam a compreensão das disparidades e similaridades na performance comercial de cada ator, tornando evidente o domínio de Wilson neste segmento específico. A visualização coloca tem como destaque Patrick Wilson como o ator de maior bilheteria, com aproximadamente US$ 7,5 bilhões, seguido por Tobin Bell com cerca de US$ 6 bilhões. Daniel Kaluuya e Ethan Hawke aparecem em posições subsequentes, com aproximadamente US$ 3,5 bilhões e US$ 2 bilhões, respectivamente.
 
-### Popularidade de Filmes:  Terror Psicológico  e Terror Psicológico + Mistério
+### 3\. Popularidade de Filmes:  Terror Psicológico  e Terror Psicológico + Mistério
 
 Terror Psicológico e Mistério: Filmes de terror psicológico que também são classificados como mistério são, de fato, mais bem avaliados pela crítica do que aqueles que são puramente terror psicológico.
 
@@ -233,7 +233,7 @@ Terror Psicológico e Mistério: Filmes de terror psicológico que também são 
 
 **Conclusão** Oss resultados indicam que os filmes que combinam terror psicológico com mistério tendem a ser melhor avaliados pelo público, comprovando visualmente o valor desta combinação de gêneros.
 
-### Comparativo de Nota Média entre Filmes de Terror Leve (PG-13) e Restrito (R)
+### 4\. Comparativo de Nota Média entre Filmes de Terror Leve (PG-13) e Restrito (R)
 
 O Dilema do Terror Leve: Filmes de terror com classificação indicativa mais branda (PG-13 nos EUA) são mais populares ou mais bem avaliados que os filmes com classificação restrita (R)? Como a popularidade e a nota média desses filmes se comparam?
 
@@ -259,7 +259,7 @@ ifelse(
 
 **Conclusão**: Esse formato evidencia de maneira particularmente eficaz o destaque para a diferença significativa nas avaliações médias. A distância considerável entre as barras não é apenas perceptível, mas quantificável visualmente, sublinhando que não se trata de uma mera variação marginal, mas de um abismo avaliativo. Os filmes restritos, com uma nota média em torno de 7.2, superam em 0.6 os filmes leves, que se mantêm próximos de 6.6. 
 
-### Comparativo de Popularidade: David Fincher vs Christopher Nolan
+### 5\. Comparativo de Popularidade: David Fincher vs Christopher Nolan
 
 Mestres do Suspense Moderno: Quem é o verdadeiro mestre do suspense: David Fincher ou Christopher Nolan? Analisando a filmografia de mistério e suspense de ambos, qual diretor apresenta uma carreira mais consistente em termos de aclamação da crítica (nota média de seus filmes)?
 
@@ -271,7 +271,7 @@ Mestres do Suspense Moderno: Quem é o verdadeiro mestre do suspense: David Finc
 
 Por outro lado, Christopher Nolan, embora amplamente aclamado por sucessos de grande escala como A Origem, Interestelar e a trilogia do Cavaleiro das Trevas, apresenta aqui uma popularidade menor neste recorte específico. Isso pode refletir uma associação maior de Nolan com ficção científica e super-heróis, enquanto Fincher é frequentemente vinculado de forma mais direta ao suspense psicológico e a tramas sombrias e realistas.
 
-### Comparativo de Desempenho em Avaliações: Adaptações de Stephen King vs Filmes Originais de Terror
+### 6\. Comparativo de Desempenho em Avaliações: Adaptações de Stephen King vs Filmes Originais de Terror
 
 O Toque de Midas de Stephen King: Filmes de terror baseados na obra de Stephen King apresentam um desempenho crítico superior à média do gênero? Como a nota média das adaptações de King se compara com filmes de terror com roteiros originais?
 
@@ -301,6 +301,4 @@ Em contrapartida, os filmes de terror com roteiros originais frequentemente enfr
 ![Análise - Parte 1](../Evidencias/Desafio/09-projeto-1.png)
 
 ![Análise - Parte 2](../Evidencias/Desafio/10-projeto-2.png)
-
-# Análise em PDF
 
