@@ -14,7 +14,7 @@ As principais modificações, em comparação com a abordagem anterior, podem se
 
 Uma mudança importante foi a remoção das colunas de auditoria (`data_criacao` e `data_atualizacao`). Essa decisão reflete um foco pragmático no objetivo central do projeto. Ao remover essa lógica, o script se torna mais enxuto e sua execução é direcionada inteiramente para as complexas transformações de negócio. 
 
-1. ... [Etapa I](./etapa-1/Grafico_Analise.pdf)
+1. ... [Etapa I](./etapa-1/Grafico_Analise_Fillmes_Terror_Misterio.pdf)
 
 
 ## Criação da View: `vw_filmes_analise`
