@@ -148,11 +148,11 @@ Após a criação da *view* `vw_filmes_analise` no Amazon Athena, que consolida 
 
 Após isso, foi selecionada a opção `Publicar e Visualizar`, e assim as configurações de geração dos gráficos foram realizadas.
 
-# Curiosidade: Design e Identidade Visual - A Paleta de Cores de Freddy Krueger
+# Curiosidade: Design e Identidade Visual - A Paleta de Cores Inspirada em Freddy Krueger
 
 A escolha da paleta de cores para os dashboards no QuickSight não foi aleatória. Ela foi concebida como um elemento narrativo, uma forma de conectar a identidade visual do projeto diretamente ao conteúdo dos dados analisados: o universo do cinema.
 
-A inspiração para o design veio de um dos ícones mais reconhecíveis do cinema de terror: **Freddy Krueger**, do clássico *A Hora do Pesadelo* (*A Nightmare on Elm Street*). A paleta de cores característica do personagem, extraída de seu icônico suéter listrado, foi a base para a criação dos gráficos.
+A inspiração para o design veio de um dos ícones mais reconhecíveis do cinema de terror: **Freddy Krueger**, do clássico *A Hora do Pesadelo*. A paleta de cores característica do personagem, extraída de seu icônico suéter listrado, foi a base para a criação dos gráficos.
 
 As cores foram aplicadas da seguinte forma:
 
@@ -160,7 +160,7 @@ As cores foram aplicadas da seguinte forma:
     
 - **Tons de Cinza e Preto:** Utilizados para fundos, textos e elementos secundários, evocando a atmosfera sombria e noturna característica dos filmes de terror e do próprio personagem.
     
-- **Bege e Marrom:** Empregados como cores de destaque ou secundárias, fazendo uma alusão sutil ao seu chapéu e à sua luva de lâminas.
+- **Marrom:** Empregados como cores de destaque ou secundárias, fazendo uma alusão sutil ao seu chapéu e à sua luva de lâminas.
 
 <p align="center">
   <img src="../Evidencias/Desafio/Freddy-Krueger.jpg" width="250" height="250">
