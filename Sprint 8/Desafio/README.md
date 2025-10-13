@@ -191,7 +191,7 @@ A Evolução da Protagonista Feminina: Comparando a década de 80 com a de 2010,
 
 **Conclusão**: Entre 1980 e 2020, os filmes de terror com protagonistas femininas deixaram de ocupar um espaço limitado, o arquétipo previsível da “final girl” para representar uma parte significativa das produções do gênero. Esse crescimento evidencia uma transformação dupla: a evolução da representação feminina no terror e a ampliação do espaço da indústria para narrativas conduzidas por mulheres. Ainda assim, observa-se uma leve queda na quantidade de títulos a partir da década de 2010, sugerindo que, embora o protagonismo feminino tenha conquistado força, ele ainda enfrenta oscilações dentro do mercado cinematográfico. 
 
-### 2\. Comparativo de Receita Arrecadada de cada Ator  Proeminentes no Terror Pós-2000
+### 2\. Comparativo de Receita Arrecadada de cada Ator  Proeminente no Terror Pós-2000
 
 O Reinado dos Ícones Masculinos do Terror Moderno: Quem são os atores que definem o terror moderno? Analisando a filmografia de atores proeminentes no gênero pós-anos 2000, qual deles construiu a carreira mais impactante em termos de número de filmes, nota média e sucesso de bilheteria?
 
