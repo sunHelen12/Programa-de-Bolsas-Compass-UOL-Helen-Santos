@@ -183,7 +183,7 @@ Dessa forma, a experiência do usuário é enriquecida, unindo a precisão da an
 
 ### 1\. Quantidade de filmes de terror com protagonistas femininas por década
 
-A Evolução da Protagonista Feminina: Comparando a década de 80 com a de 2010, filmes de terror com protagonistas femininas se tornaram mais comuns? 
+A Evolução da Protagonista Feminina: Comparando a década de 80 com a de 2020, filmes de terror com protagonistas femininas se tornaram mais comuns? 
 
 - O gráfico de linhas foi ideal para mostrar a evolução de uma variável (como a contagem de filmes) ao longo do tempo (décadas). A progressão ficou imediatamente visível. Ele também facilitou a identificação de períodos de crescimento acelerado, estabilidade ou queda no número de filmes com protagonistas femininas. O gráfico "Quantidade de filmes de terror com protagonistas femininas por década" mostrou um crescimento notável e consistente ao longo das décadas, especialmente a partir dos anos 1980.
 
