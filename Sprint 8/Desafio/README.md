@@ -4,7 +4,7 @@ Enfim, à etapa final e mais gratificante do desafio, focada no consumo dos dado
 
 A ferramenta utilizada para esta tarefa foi o AWS QuickSight, uma poderosa solução de Business Intelligence nativa da AWS.
 
-## Modificação na Criação das Tabelas do Modelo Dimensional
+## Modificação das Tabelas do Modelo Dimensional
 
 O script desenvolvido para criação do modelo dimensional foi alterado (as alterações serão explicadas no Readme.md do Desafio da Sprint 7). Enquanto o **script original** executava um processo de transformação linear e isolado para cada tabela, esta nova versão adota uma abordagem muito mais sofisticada: ela trata as diversas fontes de dados como peças de um mesmo quebra-cabeça, trabalhando ativamente para unificá-las e construir uma "fonte única da verdade" na camada Refined.
 
