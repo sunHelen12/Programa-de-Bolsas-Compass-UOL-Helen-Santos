@@ -150,7 +150,7 @@ Após isso, foi selecionada a opção `Publicar e Visualizar`, e assim as config
 
 # Curiosidade: Design e Identidade Visual - A Paleta de Cores Inspirada em Freddy Krueger
 
-A escolha da paleta de cores para os dashboards no QuickSight não foi aleatória. Ela foi concebida como um elemento narrativo, uma forma de conectar a identidade visual do projeto diretamente ao conteúdo dos dados analisados: o universo do cinema.
+A escolha da paleta de cores para os dashboards no QuickSight não foi aleatória. Ela foi concebida como um elemento narrativo, uma forma de conectar a identidade visual do projeto (com tem: Terror e Mistério) diretamente ao conteúdo dos dados analisados: o universo do cinema.
 
 A inspiração para o design veio de um dos ícones mais reconhecíveis do cinema de terror: **Freddy Krueger**, do clássico *A Hora do Pesadelo*. A paleta de cores característica do personagem, extraída de seu icônico suéter listrado, foi a base para a criação dos gráficos.
 
