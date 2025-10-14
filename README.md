@@ -7,7 +7,7 @@
 </p>
 
 🔭**Graduanda do Curso de Sistemas de Informação:**
-Atualmente curso o 3º semestre do Bacharelado em Sistemas de Informação no Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) – Campus Vitória da Conquista.
+Atualmente curso o 4º semestre do Bacharelado em Sistemas de Informação no Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA) – Campus Vitória da Conquista.
 
 ☕ **Interesse em Banco de Dados e APIs:**
 Tenho grande afinidade com áreas como Banco de Dados, desenvolvimento de APIs e lógica de programação aplicada. Essas temáticas fazem parte não apenas da minha formação acadêmica, mas também dos projetos pessoais que desenvolvo por iniciativa própria.
