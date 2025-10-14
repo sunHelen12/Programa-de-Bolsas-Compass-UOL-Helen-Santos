@@ -30,10 +30,6 @@ A dimensão `dim_genero` organiza os gêneros dos filmes, como terror, drama ou 
 
 A dimensão `dim_data` é responsável por organizar a estrutura temporal. A partir da data de lançamento, foram derivados atributos como ano, mês, dia, trimestre e década. A ligação com a fato_filme fornece a possibilidade de análises temporais detalhadas, como evolução do lucro ou das notas médias ao longo do tempo.
 
-Todas as tabelas incluem colunas de auditoria, como `data_criacao` e `data_atualizacao`, que permitem rastrear o ciclo de vida de cada registro individualmente. Esse recurso garante transparência sobre quando cada informação foi inserida ou atualizada no sistema, algo essencial para governança e qualidade de dados.
-
-Em conjunto, essas relações e atributos conformam uma arquitetura de barramento robusta e extensível, permitindo consultas consistentes e análises drill-across entre diferentes processos de negócio. O modelo garante clareza e precisão nas análises, ao mesmo tempo em que oferece flexibilidade para expansão futura, seja pela inclusão de novas métricas ou pela incorporação de novas fontes de dados.
-
 # Etapas
 
 1. ... [Etapa I](./etapa-1/teste_local.py)
@@ -476,9 +472,13 @@ job.init(args["JOB_NAME"], args)
 logger = glueContext.get_logger()
 ```
 
-### Atribuição de Variáveis e Função de Persistência
+### Atribuição de Variáveis e as Funções de Persistência
 
-Este bloco organiza a configuração do job. Primeiro, ele atribui os parâmetros lidos a variáveis com nomes mais claros, facilitando a leitura do restante do código. Em seguida, define a função `salvar_refined`, uma peça central e reutilizável do ETL. Esta função é responsável por salvar qualquer DataFrame na camada Refinada. Ela implementa uma excelente prática de engenharia de dados ao adicionar automaticamente colunas de auditoria (`data_criacao` e `data_atualizacao`) a cada tabela. Além de salvar os dados em formato Parquet no S3, ela também atualiza o AWS Glue Data Catalog, garantindo que as novas tabelas fiquem imediatamente disponíveis para consulta.
+Primeiramente são inicializados os componentes do Glue e atribuição de variáveis.Em seguida as seguintes  funções são implementadas:
+
+- **`salvar_refined`**: Esta função padroniza o processo de escrita na camada Refined. Ela recebe um DataFrame do Spark, constrói o caminho de destino no S3, converte o DataFrame para o formato `DynamicFrame` do Glue e o salva em Parquet, garantindo que a tabela também seja registrada no Glue Data Catalog.
+    
+- **`validar_tabela`**: Uma função de qualidade de dados que verifica a existência de chaves primárias duplicadas. Ela utiliza uma **Window Function** para particionar os dados pela chave primária e numerar as linhas; caso encontre duplicatas (contagem > 1), ela filtra e mantém apenas a primeira ocorrência, garantindo a unicidade da chave na tabela final.
 
 ```
 TRUSTED_DB_MOVIE = args['TRUSTED_DB_MOVIE']
@@ -486,16 +486,11 @@ TRUSTED_DB_TMDB = args['TRUSTED_DB_TMDB']
 REFINED_DB = args['REFINED_DB']
 REFINED_S3_PATH = args['REFINED_S3_PATH']
 
-timestamp_execucao = current_timestamp()
-
 def salvar_refined(df, nome_tabela):
-    df_com_auditoria = df.withColumn("data_criacao", timestamp_execucao) \
-                         .withColumn("data_atualizacao", timestamp_execucao)
-
     caminho_s3 = f"{REFINED_S3_PATH}{nome_tabela}/"
     logger.info(f"Salvando tabela '{nome_tabela}' em: {caminho_s3}")
 
-    dynamic_frame_write = DynamicFrame.fromDF(df_com_auditoria, glueContext, f"df_{nome_tabela}")
+    dynamic_frame_write = DynamicFrame.fromDF(df, glueContext, f"df_{nome_tabela}")
 
     glueContext.write_dynamic_frame.from_options(
         frame=dynamic_frame_write,
@@ -505,6 +500,35 @@ def salvar_refined(df, nome_tabela):
         transformation_ctx=f"write_{nome_tabela}"
     )
     logger.info(f"Tabela '{nome_tabela}' salva e catalogada com sucesso.")
+
+def validar_tabela(df, nome_tabela, chave_primaria=None):
+    """Função para validar qualidade dos dados"""
+    total_registros = df.count()
+    logger.info(f"Tabela {nome_tabela}: {total_registros} registros")
+    
+    if chave_primaria:
+        if isinstance(chave_primaria, list):
+            duplicatas = df.groupBy(*chave_primaria).count().filter(col("count") > 1)
+        else:
+            duplicatas = df.groupBy(chave_primaria).count().filter(col("count") > 1)
+        
+        total_duplicatas = duplicatas.count()
+        if total_duplicatas > 0:
+            logger.warn(f"Tabela {nome_tabela}: {total_duplicatas} chaves primárias duplicadas")
+            # Remover duplicatas mantendo o primeiro registro
+            if isinstance(chave_primaria, list):
+                window = Window.partitionBy(*chave_primaria).orderBy(chave_primaria[0])
+            else:
+                window = Window.partitionBy(chave_primaria).orderBy(chave_primaria)
+            
+            df = df.withColumn("row_num", row_number().over(window)) \
+                  .filter(col("row_num") == 1) \
+                  .drop("row_num")
+            logger.info(f"Duplicatas removidas da tabela {nome_tabela}")
+        else:
+            logger.info(f"Tabela {nome_tabela}: Sem duplicatas na chave primária")
+    
+    return df
 ```
 
 ### Leitura de Dados da Camada Trusted
@@ -522,103 +546,437 @@ df_protagonista_trusted = glueContext.create_dynamic_frame.from_catalog(database
 df_terror_psicologico_trusted = glueContext.create_dynamic_frame.from_catalog(database=TRUSTED_DB_TMDB, table_name="terror_psicologico_misterio_trusted").toDF()
 logger.info("Leitura da camada Trusted concluída.")
 ```
-
-### Pré-processamento e Normalização
-
-Este é um dos blocos mais críticos, pois prepara os dados para as junções. Ele realiza duas tarefas principais: primeiro, padroniza os IDs dos filmes em todas as tabelas para que sejam do tipo inteiro, removendo o prefixo "tt" quando necessário. Segundo, ele implementa a solução para o maior desafio: a criação da coluna `titulo_normalizado`. Ao converter os títulos para minúsculas e remover todos os caracteres não alfanuméricos, ele cria uma chave de junção confiável que nos permitirá combinar os dados das diferentes fontes, mesmo que os títulos ou IDs originais não sejam consistentes. Ele também adiciona um filtro para remover datas nulas ou vazias, evitando erros de conversão.
+#### A Função `normalizar_titulo`
 
 ```
-logger.info("Iniciando pré-processamento e normalização dos dados...")
+def normalizar_titulo(titulo_col):
+    """Normaliza títulos removendo caracteres especiais, artigos e espaços extras"""
+    return regexp_replace(
+        regexp_replace(
+            lower(trim(titulo_col)),
+            r"\b(the|a|an|and|or|but)\b|['\":;,.!?\-]",  
+            ""
+        ),
+        r"\s+",  
+        ""
+    )
+```
+
+Esta função é a peça central para conseguir unir os dados do seu CSV com os dados da API do TMDB. Como os títulos podem ter pequenas variações ("The Shining" vs. "Shining, The"), esta função cria uma versão simplificada e padronizada de cada título. Ela faz isso em três passos:
+
+- `lower(trim(titulo_col))`: Remove espaços no início e no fim e converte todo o texto para minúsculas.
+    
+- `regexp_replace(..., r"\b(the|a|an...)\b|['\":;,.!?\-]", "")`: Usa uma expressão regular para remover duas coisas:
+    
+    - Artigos e conjunções comuns em inglês (`the`, `a`, `an`, etc.).
+        
+    - Todos os principais sinais de pontuação.
+        
+- `regexp_replace(..., r"\s+", "")`: Pega o resultado anterior e remove todos os espaços restantes.
+
+#### Padronização dos IDs e Títulos
+
+```
 df_movies_trusted = df_movies_trusted.withColumn("id_filme", regexp_replace(col("id_filme"), "^tt", "").cast("int"))
 df_atores_trusted = df_atores_trusted.withColumn("id_filme", col("filme_id").cast("int"))
 df_diretores_trusted = df_diretores_trusted.withColumn("id_filme", col("filme_id").cast("int"))
+df_classificacao_trusted = df_classificacao_trusted.withColumn("id_filme", col("filme_id").cast("int"))
+df_sk_trusted = df_sk_trusted.withColumn("id_filme", col("filme_id").cast("int"))
 df_protagonista_trusted = df_protagonista_trusted.withColumn("id_filme", col("filme_id").cast("int"))
-
-df_movies_trusted = df_movies_trusted.withColumn("titulo_normalizado", regexp_replace(lower(col("titulo_principal")), "[^a-z0-9]", ""))
-df_classificacao_trusted = df_classificacao_trusted.filter(col("filme_data_lancamento").isNotNull() & (col("filme_data_lancamento") != "")).withColumn("titulo_normalizado", regexp_replace(lower(col("filme_titulo")), "[^a-z0-9]", "")).withColumn("ano_lancamento", year(col("filme_data_lancamento")))
-df_sk_trusted = df_sk_trusted.filter(col("filme_data_lancamento").isNotNull() & (col("filme_data_lancamento") != "")).withColumn("titulo_normalizado", regexp_replace(lower(col("filme_titulo")), "[^a-z0-9]", "")).withColumn("ano_lancamento", year(col("filme_data_lancamento"))).filter(col("fonte") == "stephen_king")
-df_terror_psicologico_trusted = df_terror_psicologico_trusted.filter(col("filme_data_lancamento").isNotNull() & (col("filme_data_lancamento") != "")).withColumn("titulo_normalizado", regexp_replace(lower(col("filme_titulo")), "[^a-z0-9]", "")).withColumn("ano_lancamento", year(col("filme_data_lancamento")))
-logger.info("Pré-processamento concluído.")
+df_terror_psicologico_trusted = df_terror_psicologico_trusted.withColumn("id_filme", col("filme_id").cast("int"))
+df_movies_trusted = df_movies_trusted.withColumn("titulo_normalizado", normalizar_titulo(col("titulo_principal")))
 ```
 
-### Construção das Dimensões (`dim_data`, `dim_diretor`, `dim_artista`, `dim_genero`)
+Aqui, o script garante que todos os DataFrames tenham uma coluna `id_filme` consistente e do tipo inteiro. No caso do `df_movies_trusted`, ele usa `regexp_replace` para remover o prefixo "tt" que existe nos IDs antes de convertê-los para número. Em seguida, a função `normalizar_titulo` é aplicada para criar a nova coluna `titulo_normalizado` que usaremos mais tarde.
 
-Esta seção constrói as tabelas de dimensão, que fornecem o contexto descritivo para as análises. Cada bloco tem uma responsabilidade específica: `dim_data` cria uma tabela de calendário rica em atributos temporais; `dim_diretor` e `dim_genero` criam listas únicas de diretores e gêneros; e `dim_artista` combina informações de duas fontes para criar uma visão unificada dos artistas. Todas as dimensões seguem a melhor prática de modelagem ao criar uma chave substituta (`sk_...`), que é um ID numérico único para otimizar as futuras consultas.
+#### 3\. Criação de Colunas Categóricas (Enriquecimento)
+
+```
+df_classificacao_trusted = df_classificacao_trusted.withColumn(
+    "classificacao_indicativa",
+    when(col("classificacao") == "terror_pg13", "PG-13")
+    .when(col("classificacao") == "terror_r", "R")  
+    .when(lower(col("classificacao")).contains("pg"), "PG-13")
+    .when(lower(col("classificacao")).contains("r"), "R")
+    .when(lower(col("classificacao")).contains("g"), "G")
+    .otherwise("Não Classificado")
+)
+
+df_sk_trusted = df_sk_trusted.withColumn(
+    "stephen_king_confirmado",
+    when(
+        (col("fonte") == "stephen_king") | 
+        (lower(col("filme_titulo")).contains("stephen king")) |
+        (lower(col("filme_titulo")).contains("shining")) |
+        (lower(col("filme_titulo")).contains("it chapter")) |
+        (lower(col("filme_titulo")).contains("carrie")) |
+        (lower(col("filme_titulo")).contains("misery")) |
+        (lower(col("filme_titulo")).contains("pet sematary")) |
+        (lower(col("filme_titulo")).contains("green mile")) |
+        (lower(col("filme_titulo")).contains("shawshank")),
+        True
+    ).otherwise(False)
+)
+
+df_terror_psicologico_trusted = df_terror_psicologico_trusted.withColumn(
+    "categoria_terror",
+    when(col("categoria") == "terror_psicologico", "Terror Psicológico")
+    .when(col("categoria").contains("psicologico"), "Terror Psicológico")
+    .when(col("categoria").contains("misterio"), "Mistério")
+    .otherwise("Outros")
+)
+```
+
+Esta é a fase de "feature engineering". O script usa a expressão `when(...).otherwise(...)` do Spark (que funciona como um `CASE WHEN` em SQL) para criar novas colunas com informações mais limpas:
+
+- **`classificacao_indicativa`**: Ele traduz os valores brutos da sua análise (como `"terror_pg13"`) para um padrão universal (como `"PG-13"`).
+    
+- **`stephen_king_confirmado`**: Esta lógica é particularmente robusta. Ela não confia apenas na `fonte` original, mas também verifica o título do filme em busca de palavras-chave de obras famosas de Stephen King ("shining", "it chapter", "carrie", etc.). Isso cria um indicador `True/False` muito mais preciso.
+    
+- **`categoria_terror`**: De forma similar, padroniza as subcategorias de terror em valores limpos como "Terror Psicológico" ou "Mistério".
+    
+
+Ao final deste bloco, seus DataFrames da camada Trusted foram transformados. Eles agora possuem colunas consistentes, chaves de junção normalizadas e novos atributos categóricos padronizados, estando prontos para a complexa etapa de construção das tabelas de dimensão e fato.
+
+### Construção da `dim_filme`
+
+```
+logger.info("Construindo dim_filme unificada...")
+filmes_movies = df_movies_trusted.select(...)
+# ... (lógica para coletar e unificar filmes das fontes TMDB) ...
+filmes_unificados = filmes_movies.alias("movies").join(filmes_tmdb_agg.alias("tmdb"), (col("movies.titulo_normalizado") == col("tmdb.titulo_normalizado")) & (col("movies.ano_lancamento") == col("tmdb.ano_lancamento")), how="full")
+# ... (lógica de coalesce para consolidar colunas e joins para enriquecer com metadados) ...
+dim_filme_final = validar_tabela(dim_filme_enriquecida, "dim_filme", "sk_filme")
+salvar_refined(dim_filme_final, "dim_filme")
+```
+
+A construção da **`dim_filme`** é a operação mais complexa. O objetivo é criar uma tabela de dimensão de filmes mestra, combinando as informações da fonte principal (CSV) com os dados complementares das várias fontes da API (TMDB). Para isso, o script executa uma sequência robusta de passos:
+
+1.  Os dados de filmes de todas as fontes TMDB são unificados e agregados para criar um registro único por filme.
+    
+2.  Um **`full join`** (junção externa completa) é realizado entre os filmes da fonte CSV e os filmes da fonte TMDB, utilizando a chave composta de título normalizado e ano de lançamento. O `full join` garante que nenhum filme, de nenhuma das fontes, seja perdido no processo.
+    
+3.  A função **`coalesce`** é aplicada em colunas como `titulo_principal` e `nota_media`. Ela funciona como um sistema de fallback, selecionando o primeiro valor não nulo da lista de colunas, garantindo que a informação mais completa possível seja preservada.
+    
+4.  Uma chave substituta (`sk_filme`) é gerada usando a função `row_number()`.
+    
+5.  Por fim, a tabela é enriquecida com uma série de `left joins` para adicionar os campos pré-processados, como `classificacao_indicativa` e `baseado_em_stephen_king`, resultando em uma dimensão de filmes completa e rica em atributos.
+
+#### Construção das Dimensões Adicionais
 
 ```
 logger.info("Construindo a dim_data...")
 meses_data = [(1, "Janeiro"), (2, "Fevereiro"), (3, "Março"), (4, "Abril"), (5, "Maio"), (6, "Junho"), (7, "Julho"), (8, "Agosto"), (9, "Setembro"), (10, "Outubro"), (11, "Novembro"), (12, "Dezembro")]
 df_meses_lookup = spark.createDataFrame(meses_data, ["mes_numero", "mes_nome"])
-df_datas = df_atores_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
-dim_data_base = df_datas.withColumn("ano", year(col("data_completa"))).withColumn("mes_numero", month(col("data_completa"))).withColumn("dia", dayofmonth(col("data_completa")))
+
+df_datas_atores = df_atores_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
+df_datas_diretores = df_diretores_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
+df_datas_classificacao = df_classificacao_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
+df_datas_sk = df_sk_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
+df_datas_protagonista = df_protagonista_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
+df_datas_terror_psico = df_terror_psicologico_trusted.select(col("filme_data_lancamento").alias("data_completa")).distinct().dropna()
+
+df_datas_movies = df_movies_trusted.select(
+    concat(col("ano_lancamento"), lit("-01-01")).cast("date").alias("data_completa")
+).distinct().dropna()
+
+df_datas_unificadas = df_datas_atores.union(df_datas_diretores).union(df_datas_classificacao)\
+    .union(df_datas_sk).union(df_datas_protagonista).union(df_datas_terror_psico)\
+    .union(df_datas_movies).distinct()
+
+dim_data_base = df_datas_unificadas.withColumn("ano", year(col("data_completa"))).withColumn("mes_numero", month(col("data_completa"))).withColumn("dia", dayofmonth(col("data_completa")))
 dim_data_enriquecida = dim_data_base.join(df_meses_lookup, on="mes_numero", how="left").withColumn("trimestre", when(col("mes_numero").isin([1, 2, 3]), lit("T1")).when(col("mes_numero").isin([4, 5, 6]), lit("T2")).when(col("mes_numero").isin([7, 8, 9]), lit("T3")).otherwise(lit("T4"))).withColumn("decada", concat(((col("ano") / 10).cast("integer") * 10).cast("string"), lit("s")))
 dim_data = dim_data_enriquecida.withColumn("sk_data", col("ano") * 10000 + col("mes_numero") * 100 + col("dia")).select("sk_data", "data_completa", "ano", "mes_numero", "mes_nome", "dia", "trimestre", "decada").distinct()
+dim_data = validar_tabela(dim_data, "dim_data", "sk_data")
 salvar_refined(dim_data, "dim_data")
 
 logger.info("Construindo a dim_diretor...")
-dim_diretor = df_diretores_trusted.select(col("diretor_id").alias("id_diretor"), col("diretor").alias("nome_diretor")).distinct().withColumn("sk_diretor", monotonically_increasing_id())
+window_diretor = Window.orderBy(col("id_diretor"))
+dim_diretor = df_diretores_trusted.select(col("diretor_id").alias("id_diretor"), col("diretor").alias("nome_diretor")) \
+    .distinct() \
+    .withColumn("sk_diretor", row_number().over(window_diretor)) \
+    .select("id_diretor", "nome_diretor", "sk_diretor") 
+dim_diretor = validar_tabela(dim_diretor, "dim_diretor", "sk_diretor")
 salvar_refined(dim_diretor, "dim_diretor")
 
 logger.info("Construindo a dim_artista...")
-artistas_csv = df_movies_trusted.select("nome_artista", "genero_artista", "ano_nascimento", "ano_falecimento", regexp_replace(col("titulos_mais_conhecidos"), "tt", "").alias("titulos_mais_conhecidos")).distinct()
-atores_json = df_atores_trusted.select(col("ator_id").alias("id_artista"), col("ator").alias("nome_artista")).distinct()
-dim_artista = atores_json.join(artistas_csv, on="nome_artista", how="left").withColumn("sk_artista", monotonically_increasing_id())
+
+atores_tmdb = df_atores_trusted.select(
+    col("ator_id").alias("id_artista"), 
+    col("ator").alias("nome_artista"),
+    lit("Ator").alias("tipo_artista"),
+    lit("Masculino").alias("genero_artista_padrao")
+).distinct()
+
+artistas_movies = df_movies_trusted.select(
+    col("nome_artista"), 
+    col("genero_artista"),
+    col("ano_nascimento"), 
+    col("ano_falecimento"), 
+    regexp_replace(col("titulos_mais_conhecidos"), "tt", "").alias("titulos_mais_conhecidos"),
+    col("profissao").alias("tipo_artista")
+).filter(col("nome_artista").isNotNull()).distinct()
+
+artistas_unificados = atores_tmdb.unionByName(
+    artistas_movies.select(
+        lit(None).alias("id_artista"),
+        "nome_artista",
+        "tipo_artista", 
+        col("genero_artista").alias("genero_artista_padrao"),
+        lit(None).alias("ano_nascimento"),
+        lit(None).alias("ano_falecimento"),
+        lit(None).alias("titulos_mais_conhecidos")
+    ),
+    allowMissingColumns=True
+)
+
+window_artista = Window.orderBy("nome_artista")
+dim_artista = artistas_unificados.withColumn("sk_artista", row_number().over(window_artista)) \
+    .select(
+        "sk_artista",
+        "id_artista",
+        "nome_artista", 
+        "tipo_artista",
+        "genero_artista_padrao",
+        "ano_nascimento", 
+        "ano_falecimento", 
+        "titulos_mais_conhecidos"
+    )
+
+dim_artista = validar_tabela(dim_artista, "dim_artista", "sk_artista")
 salvar_refined(dim_artista, "dim_artista")
 
 logger.info("Construindo a dim_genero...")
-dim_genero = df_movies_trusted.select(explode(split(col("genero"), ",")).alias("nome_genero")).select(trim(col("nome_genero")).alias("nome_genero")).distinct().dropna()
-dim_genero = dim_genero.withColumn("sk_genero", monotonically_increasing_id())
+window_genero = Window.orderBy(col("nome_genero"))
+dim_genero = df_movies_trusted.select(explode(split(col("genero"), ",")).alias("nome_genero")) \
+    .select(trim(col("nome_genero")).alias("nome_genero")) \
+    .distinct() \
+    .dropna() \
+    .withColumn("sk_genero", row_number().over(window_genero)) \
+    .select("nome_genero", "sk_genero") 
+dim_genero = validar_tabela(dim_genero, "dim_genero", "sk_genero")
 salvar_refined(dim_genero, "dim_genero")
 ```
 
-### Construção da `dim_filme`
+Este trecho constrói as demais tabelas de dimensão, cada uma com sua própria lógica:
 
-Este é o bloco central da modelagem. Ele constrói a `dim_filme`, que servirá como a principal dimensão para conectar as tabelas fato. O processo começa com a base de filmes do `df_movies_trusted` e, em seguida, realiza uma série de `LEFT JOINs` para enriquecer cada filme com informações adicionais: a classificação indicativa, a flag de Stephen King e a categoria de terror. A chave para o sucesso desses `JOINs` é a chave composta `titulo_normalizado` + `ano_lancamento`, que foi preparado no bloco de normalização. Ao final, as colunas de trabalho são removidas para entregar uma dimensão final limpa e pronta para o consumo.
+- **`dim_data`**: Uma dimensão de tempo completa é criada a partir da unificação de todas as colunas de data encontradas nas fontes. A partir da data completa, colunas derivadas como ano, mês, dia, trimestre e década são extraídas para facilitar análises temporais.
+    
+- **`dim_diretor`** e **`dim_artista`**: Catálogos únicos de diretores e artistas são criados, unificando dados das fontes CSV e TMDB, removendo duplicatas e gerando uma chave substituta para cada entrada.
+    
+- **`dim_genero`**: A coluna `genero` do dataset principal, que pode conter múltiplos valores separados por vírgula (ex: "Action,Drama"), é processada. As funções `split` e `explode` são usadas para quebrar a string e criar uma linha para cada gênero individual, que então são agrupadas para formar uma dimensão de gênero única.
+    
+#### Construção da Tabela Ponte (`ponte_filme_genero`)
 
 ```
-logger.info("Construindo a dim_filme...")
-dim_filme_base = df_movies_trusted.select("id_filme", "titulo_principal", "titulo_original", "ano_lancamento", "tempo_minutos", "titulo_normalizado").distinct()
-dim_filme_temp = dim_filme_base.join(df_classificacao_trusted.select("titulo_normalizado", "ano_lancamento", col("classificacao").alias("classificacao_indicativa")), on=["titulo_normalizado", "ano_lancamento"], how="left")
-dim_filme_temp = dim_filme_temp.join(df_sk_trusted.select("titulo_normalizado", "ano_lancamento").withColumn("flag_sk", lit(True)), on=["titulo_normalizado", "ano_lancamento"], how="left")
-dim_filme_temp = dim_filme_temp.join(df_terror_psicologico_trusted.select("titulo_normalizado", "ano_lancamento", col("categoria").alias("categoria_terror")), on=["titulo_normalizado", "ano_lancamento"], how="left")
-dim_filme = dim_filme_temp.withColumn("baseado_em_stephen_king", when(col("flag_sk").isNotNull(), True).otherwise(False)).drop("flag_sk", "titulo_normalizado").withColumn("sk_filme", monotonically_increasing_id())
-salvar_refined(dim_filme, "dim_filme")
+logger.info("Construindo a ponte_filme_genero...")
+df_generos_exploded = df_movies_trusted.select("id_filme", explode(split(col("genero"), ",")).alias("nome_genero"))
+ponte_temp1 = df_generos_exploded.join(dim_filme_final, ...)
+ponte_temp2 = ponte_temp1.join(dim_genero, ...)
+ponte_filme_genero = ponte_temp2.select("sk_filme", "sk_genero").distinct() 
+salvar_refined(ponte_filme_genero, "ponte_filme_genero")
 ```
 
-### Construção das Tabelas Fato e Ponte
+Para modelar corretamente a relação **muitos-para-muitos** entre filmes e gêneros, o script implementa uma **Tabela Ponte**. Primeiramente, ele cria um DataFrame onde cada linha representa a associação de um filme a um de seus gêneros. Em seguida, ele realiza `join`s com as dimensões `dim_filme` e `dim_genero` para "traduzir" os IDs de negócio para as chaves substitutas (`sk_filme`, `sk_genero`). O resultado é uma tabela simples que armazena apenas esses pares de chaves, mapeando com precisão todos os gêneros de cada filme.
 
-Este bloco final da transformação constrói as tabelas que contêm as métricas e os eventos do modelo, formando o núcleo do Fact Constellation Schema. A `ponte_filme_genero` resolve a relação muitos-para-muitos entre filmes e gêneros. A `fato_participacao` registra cada evento de um artista participando de um filme, e a `fato_filme` é a tabela principal de fatos, que une as métricas financeiras (orçamento, receita) e de avaliação (nota, votos) às chaves substitutas das dimensões correspondentes.
+#### Construção das Tabelas Fato
 
 ```
 logger.info("Construindo a ponte_filme_genero...")
 df_generos_exploded = df_movies_trusted.select("id_filme", explode(split(col("genero"), ",")).alias("nome_genero")).select("id_filme", trim(col("nome_genero")).alias("nome_genero"))
-ponte_temp1 = df_generos_exploded.join(dim_filme, on="id_filme", how="inner")
+ponte_temp1 = df_generos_exploded.join(dim_filme_final.select("id_filme_movies", "sk_filme"), col("id_filme") == col("id_filme_movies"), how="inner")
 ponte_temp2 = ponte_temp1.join(dim_genero, on="nome_genero", how="inner")
-ponte_filme_genero = ponte_temp2.select("sk_filme", "sk_genero")
+ponte_filme_genero = ponte_temp2.select("sk_filme", "sk_genero").distinct() 
+ponte_filme_genero = validar_tabela(ponte_filme_genero, "ponte_filme_genero", ["sk_filme", "sk_genero"])
 salvar_refined(ponte_filme_genero, "ponte_filme_genero")
 
 logger.info("Construindo a fato_participacao...")
+
+participantes_movies = df_movies_trusted.select(
+    "id_filme", 
+    "nome_artista", 
+    "personagem", 
+    "genero_artista"
+).dropna(subset=["nome_artista"])
+
+participantes_tmdb = df_atores_trusted.select(
+    "id_filme",
+    col("ator").alias("nome_artista"),
+    lit("Personagem Principal").alias("personagem"),
+    lit("Masculino").alias("genero_artista")
+)
+
+todos_participantes = participantes_movies.union(participantes_tmdb).distinct()
+
 df_filmes_protagonistas_fem = df_protagonista_trusted.select(col("id_filme").alias("id_filme_protagonista")).distinct()
-part_temp1 = df_movies_trusted.select("id_filme", "nome_artista", "personagem", "genero_artista").dropna(subset=["nome_artista"])
-part_temp2 = part_temp1.join(df_filmes_protagonistas_fem, part_temp1.id_filme == df_filmes_protagonistas_fem.id_filme_protagonista, how="left")
-part_temp3 = part_temp2.withColumn("is_protagonista", (col("personagem").isNotNull()) | (col("id_filme_protagonista").isNotNull() & (col("genero_artista") == 'Feminino')))
-part_temp4 = part_temp3.join(dim_filme, on="id_filme", how="inner")
-part_temp5 = part_temp4.join(dim_artista, on="nome_artista", how="inner")
-fato_participacao = part_temp5.select("sk_filme", "sk_artista", "personagem", "is_protagonista", col("genero_artista").alias("genero_artista_participacao"))
+
+part_temp2 = todos_participantes.join(df_filmes_protagonistas_fem, todos_participantes.id_filme == df_filmes_protagonistas_fem.id_filme_protagonista, how="left")
+
+part_temp3 = part_temp2.withColumn(
+    "is_protagonista",
+    when(
+        (col("personagem").isNotNull() & (col("personagem") != "")) | 
+        (col("id_filme_protagonista").isNotNull() & (col("genero_artista") == 'Feminino')) |
+        (lower(col("personagem")).contains("protagonist")) |
+        (lower(col("personagem")).contains("main")) |
+        (lower(col("personagem")).contains("lead")),
+        True
+    ).otherwise(False)
+)
+
+part_temp4 = part_temp3.join(dim_filme_final.select("id_filme_movies", "sk_filme"), col("id_filme") == col("id_filme_movies"), how="inner")
+dim_artista_para_join = dim_artista.select("sk_artista", "nome_artista")
+part_temp5 = part_temp4.join(dim_artista_para_join, on="nome_artista", how="inner")
+
+fato_participacao = part_temp5.select(
+    "sk_filme",
+    "sk_artista",
+    "personagem",
+    "is_protagonista",
+    col("genero_artista").alias("genero_artista_participacao")
+).distinct()  
+
+fato_participacao = validar_tabela(fato_participacao, "fato_participacao", ["sk_filme", "sk_artista"])
 salvar_refined(fato_participacao, "fato_participacao")
 
-logger.info("Construindo a fato_filme...")
-metricas_atores = df_atores_trusted.groupBy("id_filme").agg({"filme_orcamento": "first", "filme_receita": "first"}).withColumnRenamed("first(filme_orcamento)", "orcamento").withColumnRenamed("first(filme_receita)", "receita")
-fato_filme = df_movies_trusted.select("id_filme", "nota_media", "numero_votos") \
-    .join(metricas_atores, on="id_filme", how="left") \
-    .join(df_diretores_trusted.select("id_filme", "diretor", "filme_data_lancamento"), on="id_filme", how="left") \
-    .join(dim_filme.select("id_filme", "sk_filme"), on="id_filme", how="inner") \
-    .join(dim_diretor.select("nome_diretor", "sk_diretor"), col("diretor") == col("nome_diretor"), how="left") \
-    .join(dim_data.select("data_completa", "sk_data"), col("filme_data_lancamento") == col("data_completa"), how="left") \
-    .withColumn("lucro", col("receita") - col("orcamento")) \
-    .select("sk_filme", "sk_diretor", col("sk_data").alias("sk_data_lancamento"), "nota_media", "numero_votos", "orcamento", "receita", "lucro")
-salvar_refined(fato_filme, "fato_filme")
+logger.info("Construindo fato_filme...")
+
+metricas_financeiras = df_atores_trusted.select(
+    col("filme_id").alias("id_filme_fin"),
+    col("filme_orcamento"),
+    col("filme_receita"),
+    col("filme_nota_media")
+).filter((col("filme_orcamento") > 0) | (col("filme_receita") > 0)).distinct()
+
+diretores_filmes = df_diretores_trusted.select(
+    col("filme_id").alias("id_filme_dir"),
+    col("diretor_id")
+).distinct()
+
+datas_filmes = df_atores_trusted.select(
+    col("filme_id").alias("id_filme_data"),
+    col("filme_data_lancamento")
+).union(
+    df_diretores_trusted.select(
+        col("filme_id").alias("id_filme_data"),
+        col("filme_data_lancamento")
+    )
+).distinct()
+
+colunas_dim_filme = [
+    "sk_filme", 
+    "id_filme_tmdb", 
+    "id_filme_movies",
+    "numero_votos",
+    "nota_media",
+    "orcamento",
+    "receita"
+]
+
+fato_filme = dim_filme_final.select(*colunas_dim_filme).alias("dim_f") \
+    .join(metricas_financeiras.alias("fin"), 
+          col("dim_f.id_filme_tmdb") == col("fin.id_filme_fin"), 
+          how="left") \
+    .join(diretores_filmes.alias("dir"), 
+          col("dim_f.id_filme_tmdb") == col("dir.id_filme_dir"), 
+          how="left") \
+    .join(datas_filmes.alias("dt"), 
+          col("dim_f.id_filme_tmdb") == col("dt.id_filme_data"), 
+          how="left") \
+    .join(dim_diretor.select("id_diretor", "sk_diretor").alias("dim_d"), 
+          col("dir.diretor_id") == col("dim_d.id_diretor"), 
+          how="left") \
+    .join(dim_data.select("data_completa", "sk_data").alias("dim_dt"), 
+          col("dt.filme_data_lancamento") == col("dim_dt.data_completa"), 
+          how="left") \
+    .select(
+    col("dim_f.sk_filme"),
+    coalesce(col("dim_d.sk_diretor"), lit(0)).alias("sk_diretor"),
+    coalesce(col("dim_dt.sk_data"), lit(0)).alias("sk_data_lancamento"),
+    coalesce(
+        col("fin.filme_nota_media"), 
+        col("dim_f.nota_media"),
+        lit(0)
+    ).alias("nota_media_final"), 
+    coalesce(col("dim_f.numero_votos"), lit(0)).alias("numero_votos"),
+    coalesce(col("fin.filme_orcamento"), col("dim_f.orcamento"), lit(0)).alias("orcamento"),
+    coalesce(col("fin.filme_receita"), col("dim_f.receita"), lit(0)).alias("receita"),
+    (coalesce(col("fin.filme_receita"), col("dim_f.receita"), lit(0)) - coalesce(col("fin.filme_orcamento"), col("dim_f.orcamento"), lit(0))).alias("lucro")
+)
+
+fato_filme = fato_filme \
+    .withColumn("sk_filme", col("sk_filme").cast("int")) \
+    .withColumn("sk_diretor", col("sk_diretor").cast("int")) \
+    .withColumn("sk_data_lancamento", col("sk_data_lancamento").cast("int")) \
+    .withColumn("nota_media_final", col("nota_media_final").cast("float")) \
+    .withColumn("numero_votos", col("numero_votos").cast("int")) \
+    .withColumn("orcamento", col("orcamento").cast("bigint")) \
+    .withColumn("receita", col("receita").cast("bigint")) \
+    .withColumn("lucro", col("lucro").cast("bigint"))
+
+window_fato = Window.partitionBy("sk_filme").orderBy(
+    col("numero_votos").desc(),
+    col("nota_media_final").desc(),
+    col("receita").desc()
+)
+fato_filme_final = fato_filme.withColumn("row_num", row_number().over(window_fato)) \
+    .filter(col("row_num") == 1) \
+    .drop("row_num")
+
+fato_filme_final = validar_tabela(fato_filme_final, "fato_filme", "sk_filme")
+salvar_refined(fato_filme_final, "fato_filme")
 ```
+O núcleo do modelo é materializado em duas tabelas fato:
+
+- **`fato_participacao`**: Esta tabela captura a relação de participação de cada artista em cada filme. Ela consolida informações de todas as fontes para determinar o papel (`personagem`) e utiliza uma lógica `when` para criar um indicador booleano `is_protagonista`, que será fundamental para as análises de protagonistas.
+    
+- **`fato_filme`**: A tabela fato principal, cujo grão é um único filme. Ela é construída através de uma cadeia de `left join`s, partindo da `dim_filme` e unindo as informações de métricas financeiras, diretores e datas. A função `coalesce` é novamente utilizada para garantir que as métricas finais (`nota_media_final`, `orcamento`, `receita`) sejam as mais completas possíveis. Ao final, o `lucro` é calculado. Uma **Window Function** é usada para remover duplicatas e selecionar o registro mais completo para cada filme.
+
+#### Validação e Finalização
+
+```
+logger.info("Validação das análises...")
+analises = {
+    "Protagonistas femininas anos 80": dim_filme_final.filter(col("decada_protagonista_feminina") == "anos_80").count(),
+    "Filmes Stephen King": dim_filme_final.filter(col("baseado_em_stephen_king") == True).count(),
+    "Filmes terror psicológico": dim_filme_final.filter(col("categoria_terror").isNotNull() & (col("categoria_terror") != "Outros")).count(),
+    "Filmes com classificação": dim_filme_final.filter(col("classificacao_indicativa").isNotNull() & (col("classificacao_indicativa") != "Não Classificado")).count(),
+    "Filmes com dados financeiros": fato_filme_final.filter(col("orcamento") > 0).count(),
+    "Total de filmes na dim_filme": dim_filme_final.count(),
+    "Total de artistas na dim_artista": dim_artista.count(),
+    "Total de diretores na dim_diretor": dim_diretor.count()
+}
+
+for analise, count in analises.items():
+    logger.info(f"{analise}: {count}")
+
+logger.info("Amostra fato_filme...")
+fato_filme_final.filter(col("orcamento") > 0).show(10)
+
+logger.info("Amostra dim_filme...")  
+dim_filme_final.filter(col("baseado_em_stephen_king") == True).show(10)
+
+logger.info("Resumindo tabelas geradas...")
+tabelas = {
+    "dim_filme": dim_filme_final,
+    "dim_data": dim_data,
+    "dim_artista": dim_artista,
+    "dim_diretor": dim_diretor,
+    "dim_genero": dim_genero,
+    "fato_filme": fato_filme_final,
+    "fato_participacao": fato_participacao,
+    "ponte_filme_genero": ponte_filme_genero
+}
+
+for tabela_nome, df_tabela in tabelas.items():
+    try:
+        total = df_tabela.count()
+        logger.info(f"{tabela_nome}: {total} registros")
+    except Exception as e:
+        logger.warn(f"{tabela_nome}: Não foi possível verificar - {str(e)}")
+```
+
+Antes de finalizar, o script executa uma série de **testes de sanidade automatizados**. Ele realiza contagens em segmentos de dados que são cruciais para as análises (ex: quantos filmes de Stephen King foram encontrados, quantos filmes têm dados financeiros) e imprime os resultados nos logs do Glue. Isso permite uma verificação rápida e eficaz da qualidade e da completude do processo. 
 
 ### Finalização do Job
 
@@ -760,5 +1118,6 @@ O resultado, como pode ser visto abaixo, é a criação e catalogação bem-suce
         Obtive o seguinte resultado:
 
         ![fato_participacao - dados](../Evidencias/Desafio/etapa-2/33-refined_db-dados-fato_participacao.png)
+
 
 
