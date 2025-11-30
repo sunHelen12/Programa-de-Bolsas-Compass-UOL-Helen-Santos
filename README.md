@@ -1,4 +1,4 @@
-<h1 align="center">Programa de Bolsas Compass.UOL - Trilha de Engenharia de Dados</h1>
+<h1 align="center">Programa de Bolsas Compass UOL - Trilha de Engenharia de Dados</h1>
 
 ## Apresentação
 
@@ -30,4 +30,5 @@ Nos momentos de lazer, aprecio livros que estimulam o pensamento crítico, músi
 6. [Sprint 6](/Sprint%206/README.md)
 7. [Sprint 7](/Sprint%207/README.md)
 7. [Sprint 8](/Sprint%208/README.md)
+
 
